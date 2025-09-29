@@ -1,22 +1,12 @@
-// Select all video cards
-const videoCards = document.querySelectorAll('.video-card');
+const video1 = document.getElementById('video1');
+const soundBtn1 = document.getElementById('soundBtn1');
 
-videoCards.forEach(card => {
-  const video = card.querySelector('video');
-  const soundBtn = card.querySelector('.sound-toggle');
-
-  // Set initial icon based on muted state
-  soundBtn.src = video.muted
-    ? 'https://github.com/Priya122002/MyGames/blob/main/assets/icons/sound_off.png?raw=true'
-    : 'https://github.com/Priya122002/MyGames/blob/main/assets/icons/sound_on.png?raw=true';
-
-  // Add click listener to toggle sound
-  soundBtn.addEventListener('click', () => {
-    video.muted = !video.muted; // toggle mute
-
-    // Toggle icon
-    soundBtn.src = video.muted
-      ? 'https://github.com/Priya122002/MyGames/blob/main/assets/icons/sound_off.png?raw=true'
-      : 'https://github.com/Priya122002/MyGames/blob/main/assets/icons/sound_on.png?raw=true';
-  });
+soundBtn1.addEventListener('click', () => {
+  if(video1.muted) {
+    video1.muted = false;
+    soundBtn1.src = "https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/icons/sound_on.png";
+  } else {
+    video1.muted = true;
+    soundBtn1.src = "https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/icons/sound_off.png";
+  }
 });
