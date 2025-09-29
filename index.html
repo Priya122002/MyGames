@@ -5,205 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IUV GameDev - Fun & Learning for Kids</title>
   
-  <!-- Google Fonts: Comic Neue and Baloo -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Comic+Neue:wght@700&display=swap" rel="stylesheet" />
-
-  <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Baloo 2', cursive, Arial, sans-serif;
-      background: linear-gradient(135deg, #ffe259, #ffa751);
-      color: #333;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    header {
-      background: rgba(255 255 255 / 0.9);
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-    }
-    header h1 {
-      margin: 0;
-      font-family: 'Comic Neue', cursive;
-      font-size: 3rem;
-      color: #f57c00;
-      text-shadow: 1px 1px 0 #d46b00;
-      user-select: none;
-    }
-    header p {
-      margin: 5px 0 0;
-      font-size: 1.2rem;
-      color: #6a4b0a;
-      font-weight: 600;
-      user-select: none;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto 60px;
-      padding: 0 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .game {
-      background: #fff9e6;
-      border-radius: 20px;
-      padding: 20px 25px;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .game:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-    }
-
-    .game-icon {
-      flex-shrink: 0;
-      position: relative;
-    }
-    .game-icon img {
-      width: 100px;
-      height: 100px;
-      border-radius: 20px;
-      object-fit: cover;
-      border: 3px solid #f9a825;
-      box-shadow: 0 4px 8px rgba(249, 168, 37, 0.4);
-      transition: transform 0.3s ease;
-    }
-    .game:hover .game-icon img {
-      transform: scale(1.05) rotate(5deg);
-    }
-
-    .game-content {
-      flex: 1;
-    }
-    .game h2 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      font-family: 'Comic Neue', cursive;
-      color: #f57c00;
-      font-size: 1.8rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .game-content p {
-      font-size: 1.05rem;
-      margin-top: 0;
-      margin-bottom: 15px;
-      line-height: 1.4;
-      color: #5d4037;
-    }
-
-    .game ul {
-      padding-left: 20px;
-      margin: 0 0 15px;
-      color: #6d4c41;
-      font-weight: 600;
-      list-style: none;
-      position: relative;
-    }
-    .game ul li {
-      margin-bottom: 8px;
-      padding-left: 25px;
-      position: relative;
-      font-size: 1rem;
-      line-height: 1.3;
-    }
-    .game ul li::before {
-      content: "🎯";
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 1.2rem;
-      transform: translateY(2px);
-    }
-
-    .game p strong {
-      color: #d84315;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      background: #f57c00;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      box-shadow: 0 4px 10px rgba(245, 124, 0, 0.5);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-    }
-    .btn:hover {
-      background: #ef6c00;
-      box-shadow: 0 6px 18px rgba(239, 108, 0, 0.7);
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px 15px;
-      background: rgba(255 255 255 / 0.85);
-      font-size: 1rem;
-      color: #6a4b0a;
-      font-weight: 600;
-      box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-      user-select: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 650px) {
-      .game {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .game-icon img {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 15px;
-      }
-      .game-content h2 {
-        justify-content: center;
-      }
-      .game ul li::before {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .game ul {
-        padding-left: 0;
-      }
-      .game ul li {
-        padding-left: 0;
-      }
-    }
-  </style>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -214,6 +20,46 @@
 
   <div class="container">
 
+<!-- Racing Car Game Card -->
+<div class="game video-card" style="min-height:450px; position:relative; overflow:hidden;">
+
+  <!-- Video Background with Bottom Fade -->
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline>
+      <source src="https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/icons/RacingCar.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-fade"></div>
+  </div>
+
+  <!-- Content Section starting from faded area -->
+  <div class="game-content-left" style="position:relative; z-index:2; display:flex; align-items:flex-start; margin-top:50%; padding:20px;">
+    
+    <!-- Icon on Left -->
+    <div class="game-icon" style="margin-right:20px; flex-shrink:0;">
+      <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/Car1.webp?raw=true" alt="Super Speed Car Icon" />
+    </div>
+
+    <!-- Text content -->
+    <div class="game-text">
+      <h2>Car Race 🚗💨</h2>
+      <p>Get ready for thrilling sports car races and heart-pounding fun! 🏎️🔥</p>
+      <ul>
+        <li>🏁 Race through dynamic tracks</li>
+        <li>💨 Boost your speed with nitro power-ups</li>
+        <li>🚧 Dodge obstacles and beat rivals</li>
+        <li>🏆 Collect coins and unlock new cars</li>
+      </ul>
+      <p><strong>Features:</strong> 🎮 Easy controls, 🌟 Stunning 3D visuals, 🏎️ Multiple car choices, 📱 Works offline</p>
+      <a class="btn" href="https://smileshirin.itch.io/racing-car" target="_blank" rel="noopener noreferrer">Download</a>
+    </div>
+
+  </div>
+</div>
+
+
+
+    <!-- Other Game Cards -->
     <div class="game">
       <div class="game-icon">
         <img src="https://raw.githubusercontent.com/iuv-gamedev/docs/refs/heads/main/assets/icons/Say%20ABCD%20with%20Singa.webp" alt="Say ABCD with Singa Icon" />
