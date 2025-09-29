@@ -1,7 +1,7 @@
 // Select all video cards
 const videoCards = document.querySelectorAll('.video-card');
 
-videoCards.forEach((card, index) => {
+videoCards.forEach(card => {
   const video = card.querySelector('video');
   const soundBtn = card.querySelector('.sound-toggle');
 
@@ -12,9 +12,9 @@ videoCards.forEach((card, index) => {
 
   // Add click listener to toggle sound
   soundBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
+    video.muted = !video.muted; // toggle mute
 
-    // Update icon
+    // Toggle icon
     soundBtn.src = video.muted
       ? 'https://github.com/Priya122002/MyGames/blob/main/assets/icons/sound_off.png?raw=true'
       : 'https://github.com/Priya122002/MyGames/blob/main/assets/icons/sound_on.png?raw=true';
