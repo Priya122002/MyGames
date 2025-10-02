@@ -282,3 +282,35 @@ input[type="radio"] {
   justify-content: center;
   flex-wrap: wrap;
 }
+.gallery-below-slider {
+  max-width: 960px;
+  margin: 30px auto;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: #9d92ff;
+}
+
+.gallery-below-slider h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+.game-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 36px;
+}
+
+.game-gallery img {
+  height: 140px;
+  width: auto;
+  border-radius: 14px;
+  box-shadow: 0 0 26px #9d92ffcc;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.game-gallery img:hover {
+  transform: scale(1.05);
+}
