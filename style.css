@@ -327,20 +327,19 @@ ul {
   max-width: none; /* remove max-width limiting */
 }
 
+.slides {
+  display: flex;
+  width: 400%; /* for 4 slides */
+  transition: transform 0.6s ease-in-out;
+}
+
 .slides img {
-  width: 100vw; /* full viewport width for each image */
+  width: 100vw;
   height: 500px;
   object-fit: cover;
   flex-shrink: 0;
-  border-radius: 0; /* remove rounding for full coverage */
 }
 
-.slides {
-  display: flex;
-  width: 400%; /* 4 images */
-  transition: transform 0.6s ease-in-out;
-  height: 500px;
-}
 
 #intro-content {
   max-width: 100vw !important;  /* allow full width */

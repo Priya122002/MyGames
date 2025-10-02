@@ -274,56 +274,31 @@ document.querySelectorAll('.game').forEach(card=>{
 });
 
 
-//Slider
+const slides = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
 let slideIndex = 0;
-showSlides();
+const totalSlides = dots.length;
 
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  
-  // Hide all slides
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  
-  // Remove active class from all dots
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  
-  // Show current slide and add active class to corresponding dot
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  
-  // Auto advance to next slide every 2 seconds
-  setTimeout(showSlides, 2000);
-}
-
-// Go to specific slide when dot is clicked
-function currentSlide(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  
-  // Hide all slides
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  
-  // Remove active class from all dots
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  
+function setSlide(n) {
   slideIndex = n;
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+  slides.style.transform = `translateX(-${slideIndex * 100}vw)`; // Slide container by full viewport widths
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[slideIndex].classList.add('active');
 }
+
+function nextSlide() {
+  slideIndex = (slideIndex + 1) % totalSlides;
+  setSlide(slideIndex);
+}
+
+dots.forEach((dot, idx) => {
+  dot.addEventListener('click', () => setSlide(idx));
+});
+
+// Initialize slider and auto-advance every 2 seconds
+setSlide(0);
+setInterval(nextSlide, 2000);
+
 </script>
 
 </body>
