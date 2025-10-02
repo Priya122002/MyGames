@@ -342,4 +342,11 @@ ul {
   height: 500px;
 }
 
+#intro-content {
+  max-width: 100vw !important;  /* allow full width */
+  padding: 0 !important;        /* remove horizontal padding */
+  margin: 0 !important;         /* remove auto centering margin */
+  width: 100vw !important;      /* explicitly full viewport width */
+  overflow: visible !important; /* avoid clipping overflow */
+}
 
