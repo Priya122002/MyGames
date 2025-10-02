@@ -15,16 +15,22 @@ body {
   pointer-events:none;
   background:black;
 }
-header {
-  text-align: left; /* Align content to the left */
-  font-size: 1.5rem; /* Smaller font size, adjust as needed */
-  padding-left: 20px; /* Optional: add some padding from the left edge */
+
+header { 
+  text-align:left; 
+  padding:20px 10px; 
+  z-index:2; 
+  position:relative;
 }
-header h1 {
-  font-size: 1.2em; /* Smaller size for the name */
+header h1 { 
+  margin:0; font-size:1rem; color:#fff; 
+  font-family:'Comic Neue', cursive; 
+  text-shadow: 0 0 8px #fff;
 }
-header h2 {
-  font-size: 1em; /* Smaller size for the subtitle */
+header h2 { 
+  margin:10px 0 0; font-size:1rem; color:#0ff; 
+  font-family:'Orbitron',sans-serif; 
+  text-shadow:0 0 3px #0ff; font-weight:700;
 }
 
 .tabs { 
