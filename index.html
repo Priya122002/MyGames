@@ -3,126 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Game Developer | Unity & Unreal | Creating Engaging Interactive Experiences</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Comic+Neue:wght@700&display=swap" rel="stylesheet" />
-  
-  <!-- Custom CSS -->
+  <title>Priya Girin | Game Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Comic+Neue:wght@700&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header style="text-align:center; padding:30px 20px;">
-  <h1 style="margin:0; font-size:2.5rem; color:#f57c00; font-family:'Comic Neue', cursive;">Game Developer 🎮</h1>
-  <h2 style="margin:5px 0 0; font-size:1.2rem; color:#6a4b0a; font-family:'Baloo 2', cursive; font-weight:600;">Unity & Unreal</h2>
-  <p style="margin:10px 0 0; font-size:1rem; color:#5d4037;">Creating Engaging Interactive Experiences</p>
+<canvas id="starfield"></canvas>
+
+<header>
+  <h1>Priya Girin</h1>
+  <h2>Game Developer | Unity & Unreal</h2>
 </header>
 
-  <div class="container">
+<input type="radio" name="tabs" id="tab-intro" checked>
+<input type="radio" name="tabs" id="tab-prof">
+<input type="radio" name="tabs" id="tab-games">
+<input type="radio" name="tabs" id="tab-about">
 
-<div class="game video-card" style="min-height:450px; position:relative; overflow:hidden; border-radius:20px; padding:0;">
+<div class="tabs">
+  <label for="tab-intro">Intro</label>
+  <label for="tab-prof">Professional</label>
+  <label for="tab-games">Games</label>
+  <label for="tab-about">About</label>
+</div>
 
-  <!-- Video Background -->
-  <div class="video-wrapper" style="width:100%; height:100%;">
-    <video id="video1" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:20px;">
+<!-- Intro Tab -->
+<div id="intro-content" class="tab-content">
+  <section>
+    <h2>About Me</h2>
+    <p class="bio">
+      Innovative Game Developer skilled in Unity and Unreal Engine, creating immersive AR, VR, multiplayer, and interactive 3D experiences. Passionate about blending technical excellence with engaging design to deliver world-class user experiences. I thrive in fast-paced, collaborative environments and believe that nothing is impossible with the right research and continuous upskilling. Driven to push boundaries and contribute to forward-thinking studios on a global scale.
+    </p>
+  </section>
+  <section>
+    <h2>Expertise & Skills</h2>
+    <ul>
+      <li>Unity (2D & 3D), Unreal Engine</li>
+      <li>C# development</li>
+      <li>Augmented Reality (AR) and Virtual Reality (VR)</li>
+      <li>Android Studio & App Console</li>
+      <li>Java Development</li>
+      <li>Unity Timeline & Animation</li>
+      <li>Team Leadership & Communication</li>
+      <li>Operations Management</li>
+      <li>Version Control (Git)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li>Bunts Sangha, Kumud English School</li>
+      <li>Graduate Bachelor of Science in Information Technology</li>
+      <li>HSC - Maharashtra State Board</li>
+    </ul>
+  </section>
+</div>
+
+<!-- Professional Tab -->
+<div id="prof-content" class="tab-content">
+  <section>
+    <h2>Experience</h2>
+    <p><strong>Launchtrax (2022–2025)</strong></p>
+    <p>
+      Game Developer skilled in Unity and Unreal Engine, with experience delivering defense-grade simulations, immersive training systems, and real-time interactive environments. Proven track record in physics-based realism, performance optimization, and multiplayer development, alongside publishing personal projects on the Play Store. Passionate about creating next-gen AR/VR experiences for global audiences.
+    </p>
+    <h3>Accomplishments</h3>
+    <ul>
+      <li>Developed a mining vehicle simulation in Unity with a focus on performance optimization and real-time interactions.</li>
+      <li>Built a custom Unity plugin to handle in-game notification systems and modular communication workflows and Unreal Texture Recording custom Plugin for Debrief.</li>
+      <li>Implemented multiplayer replication in Unreal Engine, including replication of VR full-body rig movements for immersive multiplayer experiences.</li>
+      <li>Engineered and debugged complex data structures and systems with strong technical design principles to support scalable gameplay features.</li>
+      <li>Proficient in C# development, with robust debugging skills and deep understanding of Unity and Unreal engine internals.</li>
+      <li>Experienced in AR development with Vuforia, and VR development for Meta Quest, focusing on immersive interactions and optimization for standalone devices.</li>
+      <li>Version control and collaborative development using Git in multi-developer environments.</li>
+    </ul>
+    <h3>Professional Experience</h3>
+    <p>3.5 years as Game Developer</p>
+  </section>
+</div>
+
+<!-- Games Tab -->
+<div id="games-content" class="tab-content">
+  <!-- Your game cards go here, unchanged. -->
+  <!-- (Copy the <div class="game">...</div> cards from previous code) -->
+  <div class="game">
+    <video autoplay muted loop playsinline>
       <source src="https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/icons/Zombie.mp4" type="video/mp4">
-      Your browser does not support the video tag.
     </video>
+    <div class="game-content">
+      <h2>Zombie World</h2>
+      <p>Immersive TPS shooting game built with Unity.</p>
+      <a class="btn" href="https://smileshirin.itch.io/zombieland-tps" target="_blank">Download</a>
+    </div>
   </div>
-
-  <!-- Download Button -->
-  <a class="btn" href="https://smileshirin.itch.io/zombieland-tps" target="_blank" rel="noopener noreferrer"
-     style="position:absolute; bottom:15px; left:15px;">
-     Download
-     
-  </a>
-  
-</div>
-
-
-<div class="game video-card" style="min-height:450px; position:relative; overflow:hidden; border-radius:20px; padding:0;">
-
-  <!-- Video Background -->
-  <div class="video-wrapper" style="width:100%; height:100%;">
-    <video id="video2"autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:20px;">
+  <div class="game">
+    <video autoplay muted loop playsinline>
       <source src="https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/icons/CarRace.mp4" type="video/mp4">
-      Your browser does not support the video tag.
     </video>
+    <div class="game-content">
+      <h2>Racing Car</h2>
+      <p>High-speed racing game built with Unity.</p>
+      <a class="btn" href="https://smileshirin.itch.io/racing-car" target="_blank">Download</a>
+    </div>
   </div>
-
-  <!-- Download Button -->
-  <a class="btn" href="https://smileshirin.itch.io/racing-car" target="_blank" rel="noopener noreferrer"
-     style="position:absolute; bottom:15px; left:15px;">
-     Download
-  </a>
- 
+  <div class="game">
+    <img src="https://raw.githubusercontent.com/iuv-gamedev/docs/refs/heads/main/assets/icons/Say%20ABCD%20with%20Singa.webp" alt="Say ABCD with Singa" />
+    <div class="game-content">
+      <h2>Say ABCD with Singa 🐯</h2>
+      <p>Joyful alphabet adventure for toddlers and preschoolers!</p>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.iuv.abcdwithsinga" target="_blank">Download</a>
+    </div>
+  </div>
+  <div class="game">
+    <img src="https://raw.githubusercontent.com/iuv-gamedev/docs/refs/heads/main/assets/icons/Magic%20Colors%20with%20Singa.webp" alt="Magic Colors with Singa" />
+    <div class="game-content">
+      <h2>Magic Colors with Singa 🌈</h2>
+      <p>Explore the magical world of colors with Singa!</p>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.iuv.magiccolorswithsinga" target="_blank">Download</a>
+    </div>
+  </div>
+  <div class="game">
+    <img src="https://raw.githubusercontent.com/iuv-gamedev/docs/refs/heads/main/assets/icons/Treasure%20D%20Word.webp" alt="Treasure D Word" />
+    <div class="game-content">
+      <h2>Treasure D Word 🧩🔍</h2>
+      <p>Solve clever riddles and guess hidden words!</p>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.iuv.treasuredword" target="_blank">Download</a>
+    </div>
+  </div>
 </div>
 
-    <!-- Other Game Cards -->
-    <div class="game">
-      <div class="game-icon">
-        <img src="https://raw.githubusercontent.com/iuv-gamedev/docs/refs/heads/main/assets/icons/Say%20ABCD%20with%20Singa.webp" alt="Say ABCD with Singa Icon" />
-      </div>
-      <div class="game-content">
-        <h2>Say ABCD with Singa 🐯</h2>
-        <p>A joyful alphabet adventure for toddlers and preschoolers! 🎉</p>
-        <ul>
-          <li>🔤 Learn the English alphabets</li>
-          <li>👂 Improve listening and speech</li>
-          <li>🎨 Bright visuals and fun animations</li>
-          <li>👆 Easy tap interactions</li>
-        </ul>
-        <p><strong>Features:</strong> ✨ One-tap gameplay, 🎶 ABCD song, 🐾 Singa the lion, 📱 Offline-friendly</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.iuv.abcdwithsinga" target="_blank" rel="noopener noreferrer">Download on Google Play</a>
-      </div>
-    </div>
+<!-- About Tab -->
+<div id="about-content" class="tab-content">
+  <p>Connect with me:</p>
+  <p>
+    <a class="btn" href="https://www.linkedin.com/in/priya-girin-781a461b5/" target="_blank">LinkedIn</a>
+    <a class="btn" href="https://www.youtube.com/@IUVGameDev" target="_blank">YouTube</a>
+    <a class="btn" href="mailto:priyagirin01@gmail.com">Email Me</a>
+  </p>
+</div>
 
-    <div class="game">
-      <div class="game-icon">
-        <img src="https://raw.githubusercontent.com/iuv-gamedev/docs/refs/heads/main/assets/icons/Magic%20Colors%20with%20Singa.webp" alt="Magic Colors with Singa Icon" />
-      </div>
-      <div class="game-content">
-        <h2>Magic Colors with Singa 🌈</h2>
-        <p>Explore the magical world of colors with Singa!</p>
-        <ul>
-          <li>🎨 Tap on colors to hear their names</li>
-          <li>🖌️ Paint fun shapes with magical colors</li>
-          <li>🔊 Cheerful voiceovers</li>
-          <li>🌟 Boost memory and fine motor skills</li>
-        </ul>
-        <p><strong>Features:</strong> ✨ Tap-to-learn, 🎨 Shape painting, 🐯 Singa the lion, 📱 Works offline</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.iuv.magiccolorswithsinga" target="_blank" rel="noopener noreferrer">Download on Google Play</a>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-icon">
-        <img src="https://raw.githubusercontent.com/iuv-gamedev/docs/refs/heads/main/assets/icons/Treasure%20D%20Word.webp" alt="Treasure D Word Icon" />
-      </div>
-      <div class="game-content">
-        <h2>Treasure D Word 🧩🔍</h2>
-        <p>Solve clever riddles and guess hidden words! 🧠💡</p>
-        <ul>
-          <li>🔠 Wordle-like with a twist</li>
-          <li>🏅 Fun puzzles for all ages</li>
-          <li>📚 Boost vocabulary & logic</li>
-        </ul>
-        <p>Each puzzle is a mini treasure hunt. Ready to find the answers?</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.iuv.treasuredword" target="_blank" rel="noopener noreferrer">Download on Google Play</a>
-      </div>
-    </div>
-
-  </div>
-
- <footer style="text-align:center; padding:20px; background-color:#f5f5f5; border-top:1px solid #ddd; font-family:'Baloo 2', cursive; color:#5d4037;">
-  © 2025 Game Developer | Made with ❤️ <br />
-  <a href="https://www.youtube.com/channel/UCJZkOZ7wt6lMR_-pm6Ly2Vg" target="_blank" rel="noopener noreferrer" 
-     style="color:#f57c00; text-decoration:none; font-weight:600;">
-    Visit My YouTube Channel 🎬
-  </a>
-</footer>
-
-
+<script>
+const canvas = document.getElementById("starfield");
+const ctx = canvas.getContext("2d");
+let w = window.innerWidth, h = window.innerHeight;
+canvas.width = w; canvas.height = h;
+let stars = Array.from({length:40}, ()=>({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.1+.5, dx:Math.random()*0.1-0.05, dy:Math.random()*0.1-0.05}));
+function draw(){ctx.clearRect(0,0,w,h);
+  stars.forEach(s=>{
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,2*Math.PI);
+    ctx.fillStyle="#fff";
+    ctx.shadowBlur=5;ctx.shadowColor="#0ff";
+    ctx.fill();
+    s.x+=s.dx;s.y+=s.dy;
+    if(s.x<0)s.x=w;if(s.x>w)s.x=0;if(s.y<0)s.y=h;if(s.y>h)s.y=0;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+window.onresize=()=>{w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;};
+document.querySelectorAll('.game').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    let rect=card.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
+    card.style.transform=`rotateY(${((x/rect.width)-0.5)*10}deg) rotateX(${((y/rect.height)-0.5)*-10}deg) scale(1.01)`;
+  });
+  card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+</script>
 </body>
 </html>
