@@ -285,3 +285,60 @@ ul {
     max-width: 100%;
   }
 }
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from { opacity: .4 }
+  to { opacity: 1 }
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 6px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+.slider {
+  position: relative;
+  width: 100vw; /* full viewport width */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 0; /* optional: remove rounding to cover edges */
+  box-shadow: 0 0 20px #0ff7;
+  height: 500px;
+  max-width: none; /* remove any max width limit */
+}
+
+.slides {
+  display: flex;
+  width: 400%; /* 4 images */
+  transition: transform 0.6s ease-in-out;
+  height: 500px;
+}
+
+.slides img {
+  width: 100vw; /* full viewport width */
+  height: 500px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 0; /* remove rounding for full coverage */
+}
+
