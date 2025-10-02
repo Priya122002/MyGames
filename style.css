@@ -15,55 +15,38 @@ body {
   pointer-events:none;
   background:black;
 }
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 10px;
-  position: relative;
-  z-index: 2;
-  text-align: left;
-}
 
-header h1 {
-  margin: 0;
-  font-size: 2rem; /* Bigger font size for Priya Girin */
-  color: #fff;
-  font-family: 'Comic Neue', cursive;
+header { 
+  text-align:center; 
+  padding:40px 20px; 
+  z-index:2; 
+  position:relative;
+}
+header h1 { 
+  margin:0; font-size:3rem; color:#fff; 
+  font-family:'Comic Neue', cursive; 
   text-shadow: 0 0 8px #fff;
 }
-
-.tabs {
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+header h2 { 
+  margin:10px 0 0; font-size:1.4rem; color:#0ff; 
+  font-family:'Orbitron',sans-serif; 
+  text-shadow:0 0 3px #0ff; font-weight:700;
 }
 
-.tabs label {
-  padding: 0 12px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-family: 'Orbitron', sans-serif;
-  color: #0ff;
-  text-shadow: 0 0 2px #fff;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s;
+.tabs { 
+  display:flex; justify-content:center; margin:20px 0; gap:20px; 
 }
-
-.tabs label:hover,
-.tabs label.active {
-  border-bottom: 2px solid #0ff;
-  color: #fff;
+.tabs label { 
+  padding:10px 25px; background:#111; color:#0ff; border-radius:25px; 
+  cursor:pointer; font-weight:700; text-shadow:0 0 2px #fff; transition:0.3s; 
+  font-family:'Orbitron',sans-serif;
+  border:2px solid #0ff;
 }
-
-.tabs input[type="radio"] {
-  display: none;
+.tabs label:hover { 
+  transform:scale(1.07); box-shadow:0 0 6px #0ff; 
+  background:#111; 
 }
-
+input[type="radio"] { display:none; }
 
 #tab-intro:checked ~ .tabs label[for="tab-intro"],
 #tab-prof:checked ~ .tabs label[for="tab-prof"],
