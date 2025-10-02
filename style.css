@@ -201,6 +201,87 @@ ul {
   flex-wrap: wrap;
 }
 
-@media (hover: hover) {
-  .game { will-change: transform;}
+.prof-experience h3,
+.prof-experience h4 {
+  color: #0ff;
+  font-family: 'Orbitron', sans-serif;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px #0ff;
+}
+
+.prof-experience p,
+.prof-experience ul {
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.prof-experience ul {
+  margin-left: 24px;
+  list-style-type: disc;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  margin-top: 15px;
+}
+
+.project {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.project img {
+  width: 180px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #0ff8;
+  flex-shrink: 0;
+}
+
+/* Left image, right text */
+.project-left {
+  flex-direction: row;
+}
+
+/* Right image, left text */
+.project-right {
+  flex-direction: row-reverse;
+}
+
+.project-desc {
+  max-width: 600px;
+  color: white;
+  line-height: 1.5;
+}
+
+.project-desc h4 {
+  font-family: 'Orbitron', sans-serif;
+  color: #0ff;
+  margin-bottom: 8px;
+  text-shadow: 0 0 7px #0ff;
+}
+
+.project-desc p {
+  color: white;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .project,
+  .project-left,
+  .project-right {
+    flex-direction: column !important;
+    align-items: flex-start;
+  }
+  .project img {
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: 12px;
+  }
+  .project-desc {
+    max-width: 100%;
+  }
 }
