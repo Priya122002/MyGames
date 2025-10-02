@@ -22,7 +22,7 @@
 <input type="radio" name="tabs" id="tab-about">
 
 <div class="tabs">
-  <label for="tab-intro">Intro</label>
+  <label for="tab-intro">Home</label>
   <label for="tab-prof">Experience</label>
   <label for="tab-games">Games</label>
   <label for="tab-about">About</label>
@@ -274,31 +274,56 @@ document.querySelectorAll('.game').forEach(card=>{
 });
 
 
-const slides = document.querySelector('.slides');
-const dots = document.querySelectorAll('.dot');
+//Slider
 let slideIndex = 0;
-const totalSlides = dots.length;
+showSlides();
 
-function setSlide(n) {
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  
+  // Hide all slides
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  
+  // Remove active class from all dots
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  
+  // Show current slide and add active class to corresponding dot
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  
+  // Auto advance to next slide every 2 seconds
+  setTimeout(showSlides, 2000);
+}
+
+// Go to specific slide when dot is clicked
+function currentSlide(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  
+  // Hide all slides
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  
+  // Remove active class from all dots
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  
   slideIndex = n;
-  slides.style.transform = `translateX(-${slideIndex * 100}vw)`; // Slide container by full viewport widths
-  dots.forEach(dot => dot.classList.remove('active'));
-  dots[slideIndex].classList.add('active');
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
 }
-
-function nextSlide() {
-  slideIndex = (slideIndex + 1) % totalSlides;
-  setSlide(slideIndex);
-}
-
-dots.forEach((dot, idx) => {
-  dot.addEventListener('click', () => setSlide(idx));
-});
-
-// Initialize slider and auto-advance every 2 seconds
-setSlide(0);
-setInterval(nextSlide, 2000);
-
 </script>
 
 </body>
