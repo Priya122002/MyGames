@@ -28,7 +28,6 @@
   <label for="tab-about">About</label>
 </div>
 
-<!-- Intro Tab -->
 <div id="intro-content" class="tab-content">
   <section>
     <h2>About Me</h2>
@@ -51,17 +50,15 @@
     </ul>
   </section>
   <section>
-  <h2>Education</h2>
-  <ul>
-    <li><strong>Kumud English School</strong><br/>Maharashtra State Board</li>
-    <li><strong>Bunts Sangha</strong><br/>HSC</li>
-    <li><strong>Bunts Sangha</strong><br/>Graduate Bachelor of Science in Information Technology</li>
-  </ul>
-</section>
-
+    <h2>Education</h2>
+    <ul>
+      <li><strong>Kumud English School</strong><br/>Maharashtra State Board</li>
+      <li><strong>Bunts Sangha</strong><br/>HSC</li>
+      <li><strong>Bunts Sangha</strong><br/>Graduate Bachelor of Science in Information Technology</li>
+    </ul>
+  </section>
 </div>
 
-<!-- Professional Tab -->
 <div id="prof-content" class="tab-content">
   <section>
     <h2>Experience</h2>
@@ -84,10 +81,7 @@
   </section>
 </div>
 
-<!-- Games Tab -->
 <div id="games-content" class="tab-content">
-  <!-- Your game cards go here, unchanged. -->
-  <!-- (Copy the <div class="game">...</div> cards from previous code) -->
   <div class="game">
     <video autoplay muted loop playsinline>
       <source src="https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/icons/Zombie.mp4" type="video/mp4">
@@ -134,64 +128,58 @@
   </div>
 </div>
 
-<!-- About Tab -->
 <div id="about-content" class="tab-content">
   <p>Connect with me:</p>
-  <p>
+  <div class="btn-row">
     <a class="btn" href="https://www.linkedin.com/in/priya-girin-781a461b5/" target="_blank">LinkedIn</a>
     <a class="btn" href="https://www.youtube.com/@IUVGameDev" target="_blank">YouTube</a>
     <a class="btn" href="mailto:priyagirin01@gmail.com">Email Me</a>
-  </p>
+  </div>
 </div>
+
 <script>
 const canvas = document.getElementById("starfield");
 const ctx = canvas.getContext("2d");
-let width = window.innerWidth;
-let height = window.innerHeight;
-canvas.width = width;
-canvas.height = height;
-
-let stars = [];
-// Init stars with random position, radius, and velocity
-for (let i = 0; i < 80; i++) {
-  stars.push({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    r: Math.random() * 1.2 + 0.7,
-    dx: (Math.random() - 0.5) * 0.1,  // horizontal speed
-    dy: (Math.random() - 0.5) * 0.1   // vertical speed
-  });
-}
-
-function animateStars() {
-  ctx.clearRect(0, 0, width, height);
+let w = window.innerWidth, h = window.innerHeight;
+canvas.width = w; canvas.height = h;
+let stars = Array.from({length:40}, ()=>({
+  x:Math.random()*w,
+  y:Math.random()*h,
+  r:Math.random()*1.1+.5,
+  dx:(Math.random()-0.5)*0.1,
+  dy:(Math.random()-0.5)*0.1
+}));
+function draw() {
+  ctx.clearRect(0,0,w,h);
   stars.forEach(star => {
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
+    ctx.arc(star.x, star.y, star.r, 0, 2*Math.PI);
     ctx.fillStyle = "#fff";
-    ctx.shadowBlur = 6;
+    ctx.shadowBlur = 5;
     ctx.shadowColor = "#0ff";
     ctx.fill();
-
     star.x += star.dx;
     star.y += star.dy;
-
-    // Wrap stars to opposite side when out of bounds
-    if (star.x < 0) star.x = width;
-    if (star.x > width) star.x = 0;
-    if (star.y < 0) star.y = height;
-    if (star.y > height) star.y = 0;
+    if(star.x < 0) star.x = w;
+    if(star.x > w) star.x = 0;
+    if(star.y < 0) star.y = h;
+    if(star.y > h) star.y = 0;
   });
-  requestAnimationFrame(animateStars);
+  requestAnimationFrame(draw);
 }
-
-animateStars();
-
+draw();
 window.addEventListener('resize', () => {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
+  w = window.innerWidth;
+  h = window.innerHeight;
+  canvas.width = w;
+  canvas.height = h;
+});
+document.querySelectorAll('.game').forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    let rect=card.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
+    card.style.transform=`rotateY(${((x/rect.width)-0.5)*10}deg) rotateX(${((y/rect.height)-0.5)*-10}deg) scale(1.01)`;
+  });
+  card.addEventListener('mouseleave',()=>card.style.transform='');
 });
 </script>
 
