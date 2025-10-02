@@ -23,7 +23,7 @@
 
 <div class="tabs">
   <label for="tab-intro">Intro</label>
-  <label for="tab-prof">Professional</label>
+  <label for="tab-prof">Experience</label>
   <label for="tab-games">Games</label>
   <label for="tab-about">About</label>
 </div>
@@ -31,7 +31,37 @@
 <!-- INTRO TAB -->
 <div id="intro-content" class="tab-content">
   <section>
-    <h2>About Me</h2>
+    <!-- Slideshow container -->
+    <div class="slideshow-container" style="max-width: 100%; position: relative; margin: auto; height: 500px; overflow: hidden;">
+      <!-- Full-width images -->
+      <div class="mySlides fade">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/Treasure%20the%20word.png?raw=true" style="width:100%; height:500px; object-fit:cover;">
+      </div>
+      <div class="mySlides fade">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/ZombieWorld.png?raw=true" style="width:100%; height:500px; object-fit:cover;">
+      </div>
+      <div class="mySlides fade">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/playstore_feature_graphic.png?raw=true" style="width:100%; height:500px; object-fit:cover;">
+      </div>
+      <div class="mySlides fade">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/playstore_feature_graphic1.png?raw=true" style="width:100%; height:500px; object-fit:cover;">
+      </div>
+    </div>
+    
+    <!-- Dots indicator -->
+    <div style="text-align:center; margin-top: 10px;">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+  </section>
+</div>
+
+<!-- PROFESSIONAL TAB -->
+<div id="prof-content" class="tab-content">
+  <section>
+      <h2>About Me</h2>
     <p class="bio">
       Innovative Game Developer skilled in Unity and Unreal Engine, creating immersive AR, VR, multiplayer, and interactive 3D experiences. Passionate about blending technical excellence with engaging design to deliver world-class user experiences. I thrive in fast-paced, collaborative environments and believe that nothing is impossible with the right research and continuous upskilling. Driven to push boundaries and contribute to forward-thinking studios on a global scale.
     </p>
@@ -49,20 +79,6 @@
       <li>Operations Management</li>
       <li>Version Control (Git)</li>
     </ul>
-  </section>
-  <section>
-    <h2>Education</h2>
-    <ul>
-      <li><strong>Kumud English School</strong><br/>Maharashtra State Board</li>
-      <li><strong>Bunts Sangha</strong><br/>HSC</li>
-      <li><strong>Bunts Sangha</strong><br/>Graduate Bachelor of Science in Information Technology</li>
-    </ul>
-  </section>
-</div>
-
-<!-- PROFESSIONAL TAB -->
-<div id="prof-content" class="tab-content">
-  <section>
     <h2>Professional Experience</h2>
 
     <h3>Launchtrax (2022-2025)</h3>
@@ -256,6 +272,58 @@ document.querySelectorAll('.game').forEach(card=>{
   });
   card.addEventListener('mouseleave',()=>card.style.transform='');
 });
+
+
+//Slider
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  
+  // Hide all slides
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  
+  // Remove active class from all dots
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  
+  // Show current slide and add active class to corresponding dot
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  
+  // Auto advance to next slide every 2 seconds
+  setTimeout(showSlides, 2000);
+}
+
+// Go to specific slide when dot is clicked
+function currentSlide(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  
+  // Hide all slides
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  
+  // Remove active class from all dots
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  
+  slideIndex = n;
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
 </script>
 
 </body>
