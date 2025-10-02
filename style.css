@@ -321,10 +321,18 @@ ul {
   width: 100vw; /* full viewport width */
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 0; /* optional: remove rounding to cover edges */
+  border-radius: 0; /* optional: remove corner rounding */
   box-shadow: 0 0 20px #0ff7;
   height: 500px;
-  max-width: none; /* remove any max width limit */
+  max-width: none; /* remove max-width limiting */
+}
+
+.slides img {
+  width: 100vw; /* full viewport width for each image */
+  height: 500px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 0; /* remove rounding for full coverage */
 }
 
 .slides {
@@ -334,11 +342,4 @@ ul {
   height: 500px;
 }
 
-.slides img {
-  width: 100vw; /* full viewport width */
-  height: 500px;
-  object-fit: cover;
-  flex-shrink: 0;
-  border-radius: 0; /* remove rounding for full coverage */
-}
 
