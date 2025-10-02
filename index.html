@@ -28,6 +28,7 @@
   <label for="tab-about">About</label>
 </div>
 
+<!-- INTRO TAB -->
 <div id="intro-content" class="tab-content">
   <section>
     <h2>About Me</h2>
@@ -59,14 +60,18 @@
   </section>
 </div>
 
+<!-- PROFESSIONAL TAB -->
 <div id="prof-content" class="tab-content">
   <section>
-    <h2>Experience</h2>
-    <p><strong>Launchtrax (2022–2025)</strong></p>
+    <h2>Professional Experience</h2>
+
+    <h3>Launchtrax (2022-2025)</h3>
+    <h4>Game Developer</h4>
     <p>
       Game Developer skilled in Unity and Unreal Engine, with experience delivering defense-grade simulations, immersive training systems, and real-time interactive environments. Proven track record in physics-based realism, performance optimization, and multiplayer development, alongside publishing personal projects on the Play Store. Passionate about creating next-gen AR/VR experiences for global audiences.
     </p>
-    <h3>Accomplishments</h3>
+
+    <h4>Accomplishments:</h4>
     <ul>
       <li>Developed a mining vehicle simulation in Unity with a focus on performance optimization and real-time interactions.</li>
       <li>Built a custom Unity plugin to handle in-game notification systems and modular communication workflows and Unreal Texture Recording custom Plugin for Debrief.</li>
@@ -76,11 +81,78 @@
       <li>Experienced in AR development with Vuforia, and VR development for Meta Quest, focusing on immersive interactions and optimization for standalone devices.</li>
       <li>Version control and collaborative development using Git in multi-developer environments.</li>
     </ul>
-    <h3>Professional Experience</h3>
-    <p>3.5 years as Game Developer</p>
+
+    <h3>It’s Digital Era (2019-2021)</h3>
+    <h4>Android Developer and Production Head</h4>
+    <p>
+      I served as both an Android Developer and Production Head, overseeing the full development lifecycle of mobile applications and leading a team to meet production goals.
+    </p>
+    <ul>
+      <li>Developing Applications: Led Android app design, development, and deployment for performance and scalability.</li>
+      <li>Implementing Ads: Integrated ads (Google AdMob) for revenue generation while maintaining user experience.</li>
+      <li>Team Management: Managed developers to ensure timely project delivery and workflow efficiency.</li>
+      <li>Production Oversight: Monitored production progress and resolved technical issues quickly.</li>
+      <li>App Deployment: Managed live apps on Google Play Console, ensuring updates and handling user feedback.</li>
+    </ul>
+
+    <h3>Projects</h3>
+    <div class="project-list">
+      <div class="project project-left">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/dragline.png?raw=true" alt="Virtual Reality Mine Simulator" />
+        <div class="project-desc">
+          <h4>Virtual Reality Mine Simulator (Unity) Team Project</h4>
+          <p>Developed a VR application simulating mining vehicles and realistic educational scenarios for IIT Institute.</p>
+          <p>Implemented safety modules and immersive experiences with Oculus and Joystick integration, collaborating with IIT for mining safety standards.</p>
+        </div>
+      </div>
+
+      <div class="project project-right">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/auv.png?raw=true" alt="Autonomous Underwater Vehicle" />
+        <div class="project-desc">
+          <h4>Autonomous Underwater Vehicle (Unity) Individual</h4>
+          <p>Designed and developed AR app using Unity and Vuforia with Model Target Generator for 3D display of AUV machine.</p>
+          <p>Interactive features allow detailed exploration of machine parts and operations.</p>
+        </div>
+      </div>
+
+      <div class="project project-left">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/multiplayer-games.jpg?raw=true" alt="Multiplayer Network Setup" />
+        <div class="project-desc">
+          <h4>Multiplayer Network Setup (Unreal) Individual</h4>
+          <p>Implemented robust multiplayer networking architecture across VR, AR, mobile, and PC platforms using Unreal Engine.</p>
+          <p>Created scalable framework for synchronized cross-platform gameplay with replication, RPCs, and digital sand terrain integration.</p>
+        </div>
+      </div>
+
+      <div class="project project-right">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/submarine.png?raw=true" alt="VR Escape Submarine" />
+        <div class="project-desc">
+          <h4>VR Escape Submarine (Unreal) Individual</h4>
+          <p>Developed VR avatars with full-body IK, synchronized multiplayer replication, low-latency client-server architecture.</p>
+          <p>Created debrief recording, live security-camera feeds, permission systems, teleportation, and custom recording plugin.</p>
+        </div>
+      </div>
+
+      <div class="project project-left">
+        <img src="https://github.com/Priya122002/MyGames/blob/main/assets/icons/android.png?raw=true" alt="Android Developer and Production Head" />
+        <div class="project-desc">
+          <h4>Android Developer and Production Head</h4>
+          <p>Led app lifecycle, AdMob ads integration, team management, and Google Play deployment for multiple projects.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Personal Projects</h3>
+    <p><strong>2D Games</strong>: Treasure The Word, SkyFlyer, CityBuilder, EndlessRunner</p>
+    <p><strong>3D Games</strong>: Racing Car, Zombie Land TPS</p>
+    <p>
+      <a class="btn" href="https://smileshirin.itch.io/" target="_blank">smileshirin.itch.io</a><br/>
+      <a class="btn" href="https://my-games-sage.vercel.app/" target="_blank">my-games-sage.vercel.app</a>
+    </p>
   </section>
 </div>
 
+<!-- GAMES TAB -->
 <div id="games-content" class="tab-content">
   <div class="game">
     <video autoplay muted loop playsinline>
@@ -128,6 +200,7 @@
   </div>
 </div>
 
+<!-- ABOUT TAB -->
 <div id="about-content" class="tab-content">
   <p>Connect with me:</p>
   <div class="btn-row">
@@ -176,7 +249,9 @@ window.addEventListener('resize', () => {
 });
 document.querySelectorAll('.game').forEach(card=>{
   card.addEventListener('mousemove', e=>{
-    let rect=card.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
+    let rect=card.getBoundingClientRect(),
+        x=e.clientX-rect.left,
+        y=e.clientY-rect.top;
     card.style.transform=`rotateY(${((x/rect.width)-0.5)*10}deg) rotateX(${((y/rect.height)-0.5)*-10}deg) scale(1.01)`;
   });
   card.addEventListener('mouseleave',()=>card.style.transform='');
