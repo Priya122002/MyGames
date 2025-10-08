@@ -165,11 +165,11 @@ html, body {
   font-size: 1rem;
   line-height: 1.5;
 }
+
 /* Experience Section */
 .experience {
   background: #0b0b0b;
-  color: #e0e0e0;
-  padding: 100px 20px;
+  padding: 80px 20px;
   text-align: center;
   font-family: 'Lato', sans-serif;
 }
@@ -178,50 +178,52 @@ html, body {
   max-width: 900px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  gap: 40px; /* Space between experiences */
+  flex-direction: column; /* Stack vertically */
+  gap: 30px;
 }
 
-/* Individual Experience Block */
+/* Experience Block (like project block) */
 .experience-block {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  background: #1a1a1a;
-  border-radius: 50px; /* Rounded block */
-  padding: 20px 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-items: flex-start;
+  background: #282c30; /* Slightly lighter than page */
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .experience-block:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  border: 2px solid #4FC3F7;
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.5);
 }
 
-/* Round Icon */
-.experience-icon {
+/* Icon Box */
+.icon-box {
   width: 60px;
   height: 60px;
-  background: #4FC3F7;
-  border-radius: 50%;
+  background: #282c30;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
-  color: #0b0b0b;
+  font-size: 2rem;
+  color: #4FC3F7;
   flex-shrink: 0;
+  margin-right: 20px;
 }
 
 /* Experience Info */
-.experience-info h3 {
+.project-info h3 {
   color: #4FC3F7;
   font-size: 1.5rem;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-.experience-info p {
+.project-info p {
   color: #e0e0e0;
   font-size: 1rem;
-  line-height: 1.4;
-  margin: 2px 0;
+  line-height: 1.5;
 }
