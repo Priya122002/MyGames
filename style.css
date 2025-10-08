@@ -165,3 +165,63 @@ html, body {
   font-size: 1rem;
   line-height: 1.5;
 }
+/* Experience Section */
+.experience {
+  background: #0b0b0b;
+  color: #e0e0e0;
+  padding: 100px 20px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.experience .container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Space between experiences */
+}
+
+/* Individual Experience Block */
+.experience-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #1a1a1a;
+  border-radius: 50px; /* Rounded block */
+  padding: 20px 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-block:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Round Icon */
+.experience-icon {
+  width: 60px;
+  height: 60px;
+  background: #4FC3F7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #0b0b0b;
+  flex-shrink: 0;
+}
+
+/* Experience Info */
+.experience-info h3 {
+  color: #4FC3F7;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.experience-info p {
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 2px 0;
+}
