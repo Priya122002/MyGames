@@ -167,21 +167,22 @@ html, body {
 }
 
 /* Experience Section */
+/* Experience Section */
 .experience {
   background: #0b0b0b;
   padding: 80px 20px;
-  text-align: center;
   font-family: 'Lato', sans-serif;
+  text-align: center; /* Heading stays centered */
 }
+
 /* Experience Heading */
 .experience h2 {
   font-size: 3rem;
   color: #4FC3F7; /* Light blue */
   margin-bottom: 50px;
-  text-align: center;
-  font-family: 'Lato', sans-serif;
 }
 
+/* Container */
 .experience .container {
   max-width: 900px;
   margin: 0 auto;
@@ -190,7 +191,7 @@ html, body {
   gap: 30px;
 }
 
-/* Experience Block (like project block) */
+/* Experience Block */
 .experience-block {
   display: flex;
   align-items: flex-start;
@@ -202,6 +203,7 @@ html, body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
+/* Hover effect */
 .experience-block:hover {
   border: 2px solid #4FC3F7;
   transform: translateY(-10px);
@@ -209,7 +211,7 @@ html, body {
 }
 
 /* Icon Box */
-.icon-box {
+.experience-block .icon-box {
   width: 60px;
   height: 60px;
   background: #282c30;
@@ -224,18 +226,27 @@ html, body {
 }
 
 /* Experience Info */
-.project-info h3 {
-  color: #4FC3F7;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+.experience-block .project-info {
+  text-align: left; /* Text aligned left inside block */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.project-info p {
+.experience-block .project-info h3 {
+  color: #4FC3F7;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.experience-block .project-info p {
   color: #e0e0e0;
   font-size: 1rem;
   line-height: 1.5;
+  margin: 0;
 }
-/* Skills Section */
+
+
 /* Skills Section */
 .skills {
   background: #0b0b0b;
