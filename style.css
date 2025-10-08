@@ -103,52 +103,29 @@ html, body {
   transform: translateY(0);
 }
 
-.projects {
-  background: #0b0b0b;
-  padding: 50px 20px;
-  font-family: 'Lato', sans-serif;
+.projects-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 900px;
+  justify-content: center; /* center the row */
+  gap: 40px; /* space between left and right blocks */
+  padding: 50px 20px;
+  max-width: 1200px;
   margin: 0 auto;
+  font-family: 'Lato', sans-serif;
 }
 
-/* Project Rows */
-.project-row {
+/* Project Block */
+.project-block {
   display: flex;
   align-items: flex-start;
-  width: 100%;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.project-row.left .project-content {
   background: #111;
   border-radius: 10px;
   padding: 20px;
-  margin-left: 20px;
-  max-width: 70%;
-  border: 2px solid transparent;
+  width: 45%; /* each block takes about half of row */
   transition: 0.3s ease;
-}
-
-.project-row.right {
-  justify-content: flex-end; /* push content to the right */
-}
-
-.project-row.right .project-content {
-  background: #111;
-  border-radius: 10px;
-  padding: 20px;
-  margin-right: 20px;
-  max-width: 70%;
   border: 2px solid transparent;
-  transition: 0.3s ease;
 }
 
-/* Hover effect */
-.project-content:hover {
+.project-block:hover {
   border: 2px solid #4FC3F7;
 }
 
@@ -164,16 +141,17 @@ html, body {
   font-size: 2rem;
   color: #4FC3F7;
   flex-shrink: 0;
+  margin-right: 20px;
 }
-  
-/* Project Content Text */
-.project-content h3 {
+
+/* Project Info */
+.project-info h3 {
   color: #4FC3F7;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.project-content p {
+.project-info p {
   color: #e0e0e0;
   font-size: 1rem;
   line-height: 1.5;
