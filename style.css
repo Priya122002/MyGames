@@ -105,28 +105,32 @@ html, body {
 
 .projects-row {
   display: flex;
-  justify-content: center; /* center the row */
-  gap: 40px; /* space between left and right blocks */
+  justify-content: center;
+  gap: 40px; /* space between blocks */
   padding: 50px 20px;
   max-width: 1200px;
   margin: 0 auto;
   font-family: 'Lato', sans-serif;
+  flex-wrap: wrap; /* make responsive on smaller screens */
 }
 
 /* Project Block */
 .project-block {
   display: flex;
   align-items: flex-start;
-  background: #111;
+  background: #1a1a1a; /* lighter than before */
   border-radius: 10px;
   padding: 20px;
-  width: 45%; /* each block takes about half of row */
-  transition: 0.3s ease;
+  width: 45%; /* two blocks per row */
+  transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid transparent;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .project-block:hover {
   border: 2px solid #4FC3F7;
+  transform: translateY(-10px); /* lift up animation */
+  box-shadow: 0 12px 20px rgba(0,0,0,0.5);
 }
 
 /* Icon Box */
