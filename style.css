@@ -265,22 +265,13 @@ html, body {
   background: #282c30;
   border-radius: 15px;
   padding: 30px 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
-  opacity: 0;               /* Start invisible */
-  transform: translateY(20px); /* Start slightly down */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-block:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 20px rgba(0,0,0,0.5);
 }
-
-/* Visible state for animation */
-.skill-block.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 
 /* Skill Icon */
 .skill-icon {
