@@ -254,7 +254,7 @@ html, body {
 /* Skills Grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 4 per row on large screens */
+  grid-template-columns: repeat(4, 1fr);  /* 4 per row on large screens */
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
