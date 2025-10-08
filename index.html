@@ -219,27 +219,32 @@
 
   </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const skillBlocks = document.querySelectorAll('.skill-block');
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const aboutSection = document.querySelector('.about');
-      let hasAnimated = false; // Trigger animation only once
+  function checkVisibility() {
+    const windowHeight = window.innerHeight;
 
-      function checkVisibility() {
-        const rect = aboutSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+    skillBlocks.forEach(block => {
+      const rect = block.getBoundingClientRect();
 
-        // Trigger fade-in only when scrolling down into view
-        if (!hasAnimated && rect.top < windowHeight - 100) {
-          aboutSection.classList.add('visible');
-          hasAnimated = true;
-        }
+      if (rect.top < windowHeight - 50 && rect.bottom > 0) {
+        // Block is visible in viewport
+        block.classList.add('visible');
+      } else {
+        // Block is out of viewport, remove visible to allow animation again
+        block.classList.remove('visible');
       }
-
-      window.addEventListener('scroll', checkVisibility);
-      checkVisibility(); // In case already visible on page load
     });
-  </script>
+  }
+
+  window.addEventListener('scroll', checkVisibility);
+  checkVisibility(); // Run on page load
+});
+</script>
+
+
 
 </body>
 </html>
