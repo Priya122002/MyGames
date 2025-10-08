@@ -5,9 +5,10 @@
   box-sizing: border-box;
 }
 
-body, html {
+html, body {
+  background: #0b0b0b; /* Dark background for full page */
   font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth; /* Smooth scroll for button */
+  scroll-behavior: smooth;
 }
 
 /* Hero Section */
@@ -25,7 +26,7 @@ body, html {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* dark transparent overlay */
+  background: rgba(0, 0, 0, 0.4); /* Dark transparent overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +71,7 @@ body, html {
   color: #e0e0e0;
   text-align: center;
   padding: 100px 20px;
-  font-family: 'Lato', sans-serif; /* Changed font */
+  font-family: 'Lato', sans-serif;
 }
 
 .about h2 {
@@ -90,6 +91,7 @@ body, html {
   color: #ffffff;
 }
 
+/* Fade-in-up Animation */
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);

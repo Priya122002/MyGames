@@ -20,13 +20,33 @@
   </section>
 
   <!-- About Me Section -->
-<section class="about fade-in-up" id="about">
+  <section class="about fade-in-up" id="about">
     <h2>✨ About Me</h2>
-  <p>👋 Hi, I’m <strong>Priya Girin</strong>, a <strong>Game Developer</strong> with 2+ years of experience creating <strong>AR/VR applications</strong>, simulators, and real-time interactive systems using <strong>Unity</strong> and <strong>Unreal Engine</strong>.</p>
-  <p>💡 I specialize in <strong>Blueprints</strong>, <strong>C++</strong>, and <strong>C#</strong>, blending performance with creativity to craft seamless and scalable experiences.</p>
-  <p>🚀 I have published applications on the <strong>Google Play Store</strong> and turn ideas into <strong>immersive, interactive experiences</strong>.</p>
-</section>
+    <p>👋 Hi, I’m <strong>Priya Girin</strong>, a <strong>Game Developer</strong> with 2+ years of experience creating <strong>AR/VR applications</strong>, simulators, and real-time interactive systems using <strong>Unity</strong> and <strong>Unreal Engine</strong>.</p>
+    <p>💡 I specialize in <strong>Blueprints</strong>, <strong>C++</strong>, and <strong>C#</strong>, blending performance with creativity to craft seamless and scalable experiences.</p>
+    <p>🚀 I have published applications on the <strong>Google Play Store</strong> and turn ideas into <strong>immersive, interactive experiences</strong>.</p>
+  </section>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const aboutSection = document.querySelector('.about');
+      let hasAnimated = false; // Trigger animation only once
+
+      function checkVisibility() {
+        const rect = aboutSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Trigger fade-in only when scrolling down into view
+        if (!hasAnimated && rect.top < windowHeight - 100) {
+          aboutSection.classList.add('visible');
+          hasAnimated = true;
+        }
+      }
+
+      window.addEventListener('scroll', checkVisibility);
+      checkVisibility(); // In case already visible on page load
+    });
+  </script>
 
 </body>
 </html>
