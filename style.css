@@ -102,34 +102,39 @@ html, body {
   opacity: 1;
   transform: translateY(0);
 }
-
-.projects-row {
-  display: flex;
-  justify-content: center;
-  gap: 40px; /* space between blocks */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Always 2 columns per row */
+  gap: 40px; /* Space between blocks */
   padding: 50px 20px;
   max-width: 1200px;
   margin: 0 auto;
   font-family: 'Lato', sans-serif;
-  flex-wrap: wrap; /* make responsive on smaller screens */
+}
+
+/* Responsive: stack vertically on smaller screens */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
 }
 
 /* Project Block */
 .project-block {
   display: flex;
   align-items: flex-start;
-  background: #1a1a1a; /* lighter than before */
+  background: #32373b; /* Lighter than page background */
   border-radius: 10px;
   padding: 20px;
-  width: 45%; /* two blocks per row */
   transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid transparent;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
+/* Hover effect: lift and border */
 .project-block:hover {
   border: 2px solid #4FC3F7;
-  transform: translateY(-10px); /* lift up animation */
+  transform: translateY(-10px); /* Lift up */
   box-shadow: 0 12px 20px rgba(0,0,0,0.5);
 }
 
@@ -137,7 +142,7 @@ html, body {
 .icon-box {
   width: 60px;
   height: 60px;
-  background: #0b0b0b;
+  background: #32373b;
   border-radius: 8px;
   display: flex;
   justify-content: center;
