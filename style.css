@@ -108,37 +108,48 @@ html, body {
   padding: 50px 20px;
   font-family: 'Lato', sans-serif;
   display: flex;
-  flex-direction: column; /* stack projects vertically */
-  align-items: center;    /* center blocks horizontally */
+  flex-direction: column;
+  align-items: center;
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Project Blocks */
-.project-block {
+/* Project Rows */
+.project-row {
   display: flex;
   align-items: flex-start;
-  background: #111;
-  padding: 20px;
-  margin-bottom: 30px;
-  border-radius: 8px;
-  transition: 0.3s ease;
-  border: 2px solid transparent;
   width: 100%;
-  max-width: 800px;
+  margin-bottom: 40px;
+  position: relative;
 }
 
-.project-block:hover {
+.project-row.left .project-content {
+  background: #111;
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: 20px;
+  max-width: 70%;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+.project-row.right {
+  justify-content: flex-end; /* push content to the right */
+}
+
+.project-row.right .project-content {
+  background: #111;
+  border-radius: 10px;
+  padding: 20px;
+  margin-right: 20px;
+  max-width: 70%;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+/* Hover effect */
+.project-content:hover {
   border: 2px solid #4FC3F7;
-}
-
-/* Left / Right Alignment */
-.project-block.left {
-  flex-direction: row;
-}
-
-.project-block.right {
-  flex-direction: row-reverse;
 }
 
 /* Icon Box */
@@ -153,22 +164,16 @@ html, body {
   font-size: 2rem;
   color: #4FC3F7;
   flex-shrink: 0;
-  margin-right: 20px;
 }
-
-.project-block.right .icon-box {
-  margin-left: 20px;
-  margin-right: 0;
-}
-
-/* Project Info */
-.project-info h3 {
+  
+/* Project Content Text */
+.project-content h3 {
   color: #4FC3F7;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.project-info p {
+.project-content p {
   color: #e0e0e0;
   font-size: 1rem;
   line-height: 1.5;
