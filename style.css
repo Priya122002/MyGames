@@ -236,25 +236,13 @@ html, body {
   line-height: 1.5;
 }
 /* Skills Section */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Always 4 per row */
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Responsive: stack vertically on smaller screens */
-@media (max-width: 1024px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row on medium screens */
-  }
-}
-
-@media (max-width: 600px) {
-  .skills-grid {
-    grid-template-columns: 1fr; /* 1 per row on small screens */
-  }
+/* Skills Section */
+.skills {
+  background: #0b0b0b;
+  color: #e0e0e0;
+  padding: 100px 20px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
 }
 
 .skills h2 {
