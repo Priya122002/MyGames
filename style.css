@@ -103,61 +103,52 @@ html, body {
   transform: translateY(0);
 }
 
-.experience {
+.projects {
   background: #0b0b0b;
-  color: #e0e0e0;
-  padding: 100px 20px;
-  text-align: center;
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: 0 auto;
   font-family: 'Lato', sans-serif;
 }
 
-.experience h2 {
-  font-size: 3rem;
-  color: #4FC3F7;
-  margin-bottom: 60px;
-}
-
-/* Project Blocks */
+/* Project Block */
 .project-block {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 50px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
+  background: #111;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  border: 2px solid transparent; /* border appears on hover */
 }
 
-.project-block.left {
-  flex-direction: row; /* icon on left */
-  border-left: 4px solid #4FC3F7;
-  padding-left: 20px;
+.project-block:hover {
+  border: 2px solid #4FC3F7; /* blue border on hover */
 }
 
-.project-block.right {
-  flex-direction: row-reverse; /* icon on right */
-  border-right: 4px solid #4FC3F7;
-  padding-right: 20px;
-}
-
-.project-block .icon {
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: #0b0b0b;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
-  margin-right: 15px;
-}
-
-.project-block.right .icon {
-  margin-left: 15px;
-  margin-right: 0;
-}
-
-.project-block .project-content h3 {
-  font-size: 1.5rem;
   color: #4FC3F7;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.project-info h3 {
+  color: #4FC3F7;
+  font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.project-block .project-content p {
+.project-info p {
+  color: #e0e0e0;
   font-size: 1rem;
   line-height: 1.5;
-  color: #e0e0e0;
 }
