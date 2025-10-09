@@ -153,20 +153,24 @@ html, body {
   margin-right: 20px;
 }
 
-/* Project Info */
+
+/* Project info below video */
+.project-info {
+  padding: 10px;
+  text-align: center;
+}
+
 .project-info h3 {
   color: #4FC3F7;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .project-info p {
   color: #e0e0e0;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.2;
 }
 
-/* Experience Section */
 /* Experience Section */
 .experience {
   background: #0b0b0b;
@@ -327,79 +331,78 @@ html, body {
   color: #4FC3F7;
   margin-bottom: 50px;
 }
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 30px; /* space between projects */
+  max-width: 1200px; /* overall width of grid */
+  margin: 0 auto; /* center the grid */
+  padding: 50px 20px;
 }
 
-/* Project Block */
 .project-block {
   display: flex;
-  flex-direction: column; /* Stack video, heading, and content vertically */
+  flex-direction: column;
   align-items: center;
   background: #282c30;
   border-radius: 15px;
-  padding: 20px;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-block:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.5);
-}
+
 
 /* Video */
 .project-block video {
-  width: 100%; /* fit block width */
-  height: auto; /* maintain aspect ratio */
+  width: 100%;
+  height: 200px; /* uniform height for all videos */
+  object-fit: cover; /* fill container without stretching */
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-/* Info under video */
 .project-info {
-  text-align: center; /* Heading and content below video */
-  margin-top: 10px; /* Space from video */
+  padding: 10px;
+  text-align: center;
 }
 
 .project-info h3 {
   color: #4FC3F7;
-  font-size: 1.5rem;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .project-info p {
   color: #e0e0e0;
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  line-height: 1.2;
 }
 
-/* Responsive: stack columns on smaller screens */
+/* Hover effect */
+.project-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+}
+
 @media (max-width: 900px) {
   .projects-grid {
-    grid-template-columns: 1fr; /* single column for mobile */
+    grid-template-columns: 1fr; /* single column */
   }
 }
 
-/* Video Container */
+/* Make the video container square */
 .video-container {
-  position: relative;
   width: 100%;
+  aspect-ratio: 1 / 1; /* keeps it square */
+  position: relative;
   background: #000;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
 }
 
-/* Video Element */
+/* Video inside container */
 .video-container video {
   width: 100%;
-  display: block;
-  border-radius: 10px;
+  height: 100%;
+  object-fit: cover; /* fills the square */
+  border-radius: 10px 10px 0 0;
 }
 
 /* Controls at the Bottom */
@@ -453,21 +456,24 @@ html, body {
 /* Progress Bar */
 .progress-bar {
   width: 100%;
-  height: 5px;
+  height: 8px; /* slightly taller for better alignment */
   -webkit-appearance: none;
   background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 4px;
+  margin: 0; 
+  padding: 0;
 }
 
-/* Progress Thumb */
+/* Chrome, Safari, Edge */
 .progress-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background: #4FC3F7;
   border-radius: 50%;
   cursor: pointer;
+  margin-top: -3px; /* center the thumb on the track */
   transition: transform 0.2s ease;
 }
 
@@ -475,29 +481,74 @@ html, body {
   transform: scale(1.2);
 }
 
-/* Firefox Thumb */
+/* Firefox */
 .progress-bar::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background: #4FC3F7;
   border-radius: 50%;
   cursor: pointer;
+  border: none;
 }
 
-/* Progress Track */
-.progress-bar::-webkit-slider-runnable-track {
-  height: 5px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
-}
-
+/* Track styling for Firefox */
 .progress-bar::-moz-range-track {
-  height: 5px;
+  height: 8px;
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
+  border-radius: 4px;
 }
+
+/* Track styling for Chrome/Safari */
+.progress-bar::-webkit-slider-runnable-track {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
 
 /* Optional hover effect on video container */
 .video-container:hover .controls-bottom {
   background: rgba(0, 0, 0, 0.7);
 }
+/* Main more menu */
+
+
+.more-menu {
+  display: none; /* Hidden initially */
+  position: absolute;
+  bottom: 40px; /* Above controls row */
+  right: 10px;
+  background: #282c30;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  padding: 5px 0;
+  z-index: 1000;
+  width: 180px;
+  flex-direction: column;
+  max-height: 300px; /* scrollable if too many items */
+  overflow-y: auto;
+}
+
+/* Menu items */
+.more-menu .menu-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.more-menu .menu-item:hover {
+  background: #4FC3F7;
+  color: #000;
+}
+
+/* Back button inside submenu */
+.more-menu .back {
+  font-weight: bold;
+  border-bottom: 1px solid #444;
+  margin-bottom: 5px;
+}
+

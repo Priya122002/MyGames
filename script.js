@@ -1,19 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Fade-in animation for sections
-  const fadeElements = document.querySelectorAll('.fade-in');
-  function checkVisibility() {
-    const windowHeight = window.innerHeight;
-    fadeElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < windowHeight - 100) {
-        el.classList.add('visible');
-      }
-    });
-  }
-  window.addEventListener('scroll', checkVisibility);
-  checkVisibility();
-
-  // Video controls
   const videos = document.querySelectorAll('.video-container');
 
   videos.forEach(container => {
@@ -22,64 +7,104 @@ document.addEventListener('DOMContentLoaded', () => {
     const volumeBtn = container.querySelector('.volume');
     const fullscreenBtn = container.querySelector('.fullscreen');
     const progressBar = container.querySelector('.progress-bar');
+    const moreBtn = container.querySelector('.more');
+    const moreMenu = container.querySelector('.more-menu');
 
-    // SVG icons
-    const playIcon = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 5v14l11-7z"/>
-      </svg>`;
-    const pauseIcon = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-      </svg>`;
-const volumeOnIcon = `
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-.77-3.29-1.97-4.28l-1.42 1.42c.57.51.91 1.24.91 2.06s-.34 1.55-.91 2.06l1.42 1.42c1.2-.99 1.97-2.51 1.97-4.28z"/>
-  </svg>`;
-
-const volumeOffIcon = `
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16.5 12c0-1.77-.77-3.29-1.97-4.28l1.42-1.42C17.23 7.71 18 9.23 18 11s-.77 3.29-1.97 4.28l-1.42-1.42c.57-.51.91-1.24.91-2.06zM3 9v6h4l5 5V4L7 9H3zm13.5 3L21 18.5 19.5 20 15 15.5 10.5 21 9 19.5 13.5 15 9 10.5 10.5 9 15 13.5 19.5 9 21 10.5 16.5 15z"/>
-  </svg>`;
-    // Set initial icon
+    const playIcon = '►';
+    const pauseIcon = '❚❚';
     playPauseBtn.innerHTML = playIcon;
 
-    // Play/Pause toggle
+    // Play/Pause
     playPauseBtn.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-        playPauseBtn.innerHTML = pauseIcon;
-      } else {
-        video.pause();
-        playPauseBtn.innerHTML = playIcon;
-      }
+      if(video.paused) { video.play(); playPauseBtn.innerHTML = pauseIcon; }
+      else { video.pause(); playPauseBtn.innerHTML = playIcon; }
     });
 
-    // Update progress bar
+    // Progress bar
     video.addEventListener('timeupdate', () => {
-      const progress = (video.currentTime / video.duration) * 100;
-      progressBar.value = progress;
+      progressBar.value = (video.currentTime / video.duration) * 100;
+    });
+    progressBar.addEventListener('input', e => {
+      video.currentTime = (e.target.value / 100) * video.duration;
     });
 
-    // Seek
-    progressBar.addEventListener('input', (e) => {
-      const seekTime = (e.target.value / 100) * video.duration;
-      video.currentTime = seekTime;
-    });
-
-    // Volume toggle
+    // Volume
     volumeBtn.addEventListener('click', () => {
       video.muted = !video.muted;
-  volumeBtn.innerHTML = video.muted ? volumeOffIcon : volumeOnIcon;
+      volumeBtn.textContent = video.muted ? '🔇' : '🔈';
+      if(!video.muted) video.volume = 1;
     });
 
-    // Fullscreen toggle
+    // Fullscreen
     fullscreenBtn.addEventListener('click', () => {
-      if (!document.fullscreenElement) {
-        container.requestFullscreen();
+      if(!document.fullscreenElement) {
+        if(container.requestFullscreen) container.requestFullscreen();
+        else if(container.webkitRequestFullscreen) container.webkitRequestFullscreen();
       } else {
-        document.exitFullscreen();
+        if(document.exitFullscreen) document.exitFullscreen();
+        else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
       }
+    });
+
+    // --- Nested Playback Speed menu inside More menu ---
+    const speedMenu = document.createElement('div');
+    speedMenu.classList.add('speed-menu');
+    speedMenu.style.display = 'none';
+    speedMenu.innerHTML = `
+      <div class="menu-item back">🔙 Back</div>
+      <div class="menu-item" data-speed="0.25">0.25x</div>
+      <div class="menu-item" data-speed="0.5">0.5x</div>
+      <div class="menu-item" data-speed="0.75">0.75x</div>
+      <div class="menu-item" data-speed="1">Normal</div>
+      <div class="menu-item" data-speed="1.25">1.25x</div>
+      <div class="menu-item" data-speed="1.5">1.5x</div>
+      <div class="menu-item" data-speed="1.75">1.75x</div>
+      <div class="menu-item" data-speed="2">2x</div>
+    `;
+    moreMenu.appendChild(speedMenu); // <-- append inside More menu
+
+    // Toggle More menu
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isVisible = moreMenu.style.display === 'flex';
+      moreMenu.style.display = isVisible ? 'none' : 'flex';
+      speedMenu.style.display = 'none';
+    });
+
+    // Click on Playback Speed
+    const speedBtn = moreMenu.querySelector('[data-action="speed"]');
+    speedBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      moreMenu.querySelectorAll('.menu-item').forEach(item => {
+        if(!item.classList.contains('speed-menu') && !item.classList.contains('back')) {
+          item.style.display = 'none';
+        }
+      });
+      speedMenu.style.display = 'flex';
+    });
+
+    // Back button
+    speedMenu.querySelector('.back').addEventListener('click', (e) => {
+      e.stopPropagation();
+      speedMenu.style.display = 'none';
+      moreMenu.querySelectorAll('.menu-item').forEach(item => item.style.display = 'flex');
+    });
+
+    // Set playback speed
+    speedMenu.querySelectorAll('[data-speed]').forEach(item => {
+      item.addEventListener('click', e => {
+        e.stopPropagation();
+        video.playbackRate = parseFloat(item.dataset.speed);
+        speedMenu.style.display = 'none';
+        moreMenu.querySelectorAll('.menu-item').forEach(item => item.style.display = 'flex');
+      });
+    });
+
+    // Close menus if clicked outside
+    document.addEventListener('click', () => {
+      moreMenu.style.display = 'none';
+      speedMenu.style.display = 'none';
+      moreMenu.querySelectorAll('.menu-item').forEach(item => item.style.display = 'flex');
     });
   });
 });
