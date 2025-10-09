@@ -326,13 +326,12 @@ html, body {
 .projects h2 {
   font-size: 3rem;
   color: #4FC3F7;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
-/* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 3 per row */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
@@ -340,45 +339,39 @@ html, body {
 
 /* Project Block */
 .project-block {
-  background: #1c1c1c;
-  border-radius: 20px;
-  overflow: hidden;
+  background: #282c30;
+  border-radius: 15px;
+  padding: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.project-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.5);
 }
 
 .project-block video {
-  width: 100px;
-  height: 50px;
-  object-fit: cover;
+  width: 100%; /* fit block width */
+  height: auto; /* maintain aspect ratio */
   border-radius: 10px;
-  margin-top: 20px;
-  border: 2px solid #333;
+  margin-bottom: 15px;
 }
 
-/* Project Info */
-.project-info {
-  padding: 20px;
-  text-align: center;
-}
-
-.project-block h3 {
-  font-size: 1.4rem;
+.project-info h3 {
   color: #4FC3F7;
-  margin: 15px 0 10px;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
 }
 
-.project-block p {
-  font-size: 0.95rem;
+.project-info p {
   color: #e0e0e0;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
-/* Hover effect */
-.project-block:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+/* Responsive: stack columns on smaller screens */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* single column for mobile */
+  }
 }
