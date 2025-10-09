@@ -1,124 +1,66 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // ==============================
-  // Fade-in About Section
-  // ==============================
-  const aboutSection = document.querySelector('.about');
-  let hasAnimated = false;
+document.addEventListener('DOMContentLoaded', () => {
+  // Handle fade-in on scroll for all elements with .fade-in
+  const fadeElements = document.querySelectorAll('.fade-in');
 
   function checkVisibility() {
-    const rect = aboutSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-
-    if (!hasAnimated && rect.top < windowHeight - 100) {
-      aboutSection.classList.add('visible');
-      hasAnimated = true;
-    }
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < windowHeight - 100) {
+        el.classList.add('visible');
+      }
+    });
   }
 
   window.addEventListener('scroll', checkVisibility);
-  checkVisibility();
+  checkVisibility(); // Initial check
 
-  // ==============================
-  // Custom Video Controls
-  // ==============================
-  const videos = document.querySelectorAll('.project-block video');
+  // VIDEO CONTROLS FUNCTIONALITY
+  const videos = document.querySelectorAll('.video-container');
 
-  videos.forEach(video => {
-    const container = video.parentElement;
+  videos.forEach(container => {
+    const video = container.querySelector('video');
+    const playPauseBtn = container.querySelector('.play-pause');
+    const volumeBtn = container.querySelector('.volume');
+    const fullscreenBtn = container.querySelector('.fullscreen');
+    const progressBar = container.querySelector('.progress-bar');
 
-    // Create controls container
-    const controls = document.createElement('div');
-    controls.classList.add('video-controls');
-
-    // Top row
-    const topRow = document.createElement('div');
-    topRow.classList.add('controls-top');
-
-    // Play/Pause button
-    const playBtn = document.createElement('button');
-    playBtn.textContent = '▶️';
-    playBtn.classList.add('play-btn');
-
-    // Sound icon
-    const soundBtn = document.createElement('button');
-    soundBtn.textContent = '🔊';
-    soundBtn.classList.add('sound-btn');
-
-    // Maximize button
-    const maxBtn = document.createElement('button');
-    maxBtn.textContent = '🖵';
-    maxBtn.classList.add('max-btn');
-
-    // Three dots button
-    const dotsBtn = document.createElement('button');
-    dotsBtn.textContent = '⋮';
-    dotsBtn.classList.add('dots-btn');
-
-    // Append top row items
-    topRow.appendChild(playBtn);
-    const rightControls = document.createElement('div');
-    rightControls.style.display = 'flex';
-    rightControls.style.gap = '10px';
-    rightControls.appendChild(soundBtn);
-    rightControls.appendChild(maxBtn);
-    rightControls.appendChild(dotsBtn);
-    topRow.appendChild(rightControls);
-    topRow.style.display = 'flex';
-    topRow.style.justifyContent = 'space-between';
-    topRow.style.alignItems = 'center';
-    topRow.style.marginBottom = '10px';
-
-    // Bottom slide bar
-    const progress = document.createElement('input');
-    progress.type = 'range';
-    progress.min = 0;
-    progress.max = 100;
-    progress.value = 0;
-    progress.classList.add('progress-bar');
-    progress.style.width = '100%';
-
-    // Append to controls container
-    controls.appendChild(topRow);
-    controls.appendChild(progress);
-
-    // Append controls to container
-    container.appendChild(controls);
-
-    // ==============================
-    // Event Listeners
-    // ==============================
-    playBtn.addEventListener('click', () => {
-      if(video.paused) {
+    // Play / Pause toggle
+    playPauseBtn.addEventListener('click', () => {
+      if (video.paused) {
         video.play();
-        playBtn.textContent = '⏸️';
+        playPauseBtn.textContent = '⏸️'; // Pause icon
       } else {
         video.pause();
-        playBtn.textContent = '▶️';
+        playPauseBtn.textContent = '▶️'; // Play icon
       }
     });
 
-    soundBtn.addEventListener('click', () => {
-      video.muted = !video.muted;
-      soundBtn.textContent = video.muted ? '🔇' : '🔊';
-    });
-
-    maxBtn.addEventListener('click', () => {
-      if(document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        container.requestFullscreen();
-      }
-    });
-
-    // Progress bar update
+    // Update progress bar as video plays
     video.addEventListener('timeupdate', () => {
-      const value = (video.currentTime / video.duration) * 100;
-      progress.value = value || 0;
+      const progress = (video.currentTime / video.duration) * 100;
+      progressBar.value = progress;
     });
 
-    // Seek video
-    progress.addEventListener('input', () => {
-      video.currentTime = (progress.value / 100) * video.duration;
+    // Seek video position when dragging the progress bar
+    progressBar.addEventListener('input', (e) => {
+      const seekTime = (e.target.value / 100) * video.duration;
+      video.currentTime = seekTime;
+    });
+
+    // Volume toggle (mute/unmute)
+    volumeBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      volumeBtn.textContent = video.muted ? '🔇' : '🔊';
+    });
+
+    // Fullscreen toggle
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        container.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
     });
   });
 });

@@ -221,28 +221,32 @@
 </section>
 
 <!-- My Projects Section -->
-<section class="projects" id="my-projects">
-  <h2>🚀 My Projects</h2>
-  <div class="projects-grid">
-
 <div class="project-block fade-in">
   <div class="video-container">
-    <video src="https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/portfoliovideos/CarSim.mp4"></video>
+    <!-- Video -->
+    <video class="custom-video" src="https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/portfoliovideos/CarSim.mp4"></video>
 
     <!-- Bottom Controls -->
     <div class="controls-bottom">
       <div class="controls-row">
-        <button class="play-pause">►</button>
+        <!-- Left: Play/Pause -->
+      <button class="play-pause">►</button>
+
+
+        <!-- Center: Progress bar -->
+        <input type="range" class="progress-bar" min="0" max="100" value="0">
+
+        <!-- Right: Volume, Fullscreen, More -->
         <div class="controls-right">
           <button class="volume">🔊</button>
           <button class="fullscreen">⛶</button>
           <button class="more">⋮</button>
         </div>
       </div>
-      <input type="range" class="progress-bar" min="0" max="100" value="0">
     </div>
   </div>
 
+  <!-- Project Info Below Video -->
   <div class="project-info">
     <h3>Car Simulation</h3>
     <p>Simulation of car vehicle, with foliage, PCG environment, and decals.</p>
