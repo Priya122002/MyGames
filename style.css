@@ -340,7 +340,7 @@ html, body {
 /* Project Block */
 .project-block {
   display: flex;
-  flex-direction: column; /* Stack video, heading, content vertically */
+  flex-direction: column; /* Stack video, heading, and content vertically */
   align-items: center;
   background: #282c30;
   border-radius: 15px;
@@ -363,7 +363,8 @@ html, body {
 
 /* Info under video */
 .project-info {
-  text-align: center;
+  text-align: center; /* Heading and content below video */
+  margin-top: 10px; /* Space from video */
 }
 
 .project-info h3 {
