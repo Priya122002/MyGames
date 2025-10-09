@@ -339,6 +339,9 @@ html, body {
 
 /* Project Block */
 .project-block {
+  display: flex;
+  flex-direction: column; /* Stack video, heading, content vertically */
+  align-items: center;
   background: #282c30;
   border-radius: 15px;
   padding: 20px;
@@ -350,11 +353,17 @@ html, body {
   box-shadow: 0 12px 20px rgba(0,0,0,0.5);
 }
 
+/* Video */
 .project-block video {
   width: 100%; /* fit block width */
   height: auto; /* maintain aspect ratio */
   border-radius: 10px;
   margin-bottom: 15px;
+}
+
+/* Info under video */
+.project-info {
+  text-align: center;
 }
 
 .project-info h3 {
