@@ -425,10 +425,11 @@ html, body {
 }
 
 /* Right side buttons (Volume, Fullscreen, More) */
-.controls-row .controls-right {
+.controls-row .controls-left {
   display: flex;
-  align-items: center;
+  align-items: center;  /* vertically center items */
   gap: 10px;
+  flex: 1;               /* take all available space */
 }
 
 /* Buttons styling */
@@ -447,28 +448,32 @@ html, body {
 
 /* Progress Bar */
 .progress-bar {
-  width: 100%;
-  height: 8px; /* slightly taller for better alignment */
-  -webkit-appearance: none;
-  background: rgba(255, 255, 255, 0.3);
+  flex: 1;                  /* stretch to fill space */
+  -webkit-appearance: none; /* remove default styling */
+  height: 5px;              /* track height */
+  border-radius: 5px;
+  background: #555;
   cursor: pointer;
-  border-radius: 4px;
-  margin: 0; 
-  padding: 0;
+  margin: 0;                 /* remove extra margin */
+  align-self: center;        /* vertically center inside flex */
 }
-
-/* Chrome, Safari, Edge */
 .progress-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 14px;
   height: 14px;
-  background: #4FC3F7;
+  background: #fff;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -3px; /* center the thumb on the track */
-  transition: transform 0.2s ease;
+  margin-top: -4.5px;       /* centers thumb on 5px track: (thumb height - track height)/2 */
 }
 
+.progress-bar::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
 .progress-bar::-webkit-slider-thumb:hover {
   transform: scale(1.2);
 }
