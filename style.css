@@ -584,7 +584,7 @@ html, body {
   height: 160px;
   border-radius: 15px;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.05); /* subtle background */
+  background-color: #282c30;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -611,7 +611,7 @@ html, body {
   height: 160px;
   border-radius: 15px;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color:#282c30;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -632,6 +632,30 @@ html, body {
   border-radius: 10px;
 }
 
+
+/* Hover Effect with Animation */
+.playstore-grid .top:hover,
+.playstore-grid .bottom-row .game-card:hover {
+  transform: translateY(-10px) scale(1.05); /* slight lift and scale */
+  border: 3px solid #1E90FF;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+}
+
+.playstore-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Bottom Row */
+.playstore-grid .bottom-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .playstore-body {
@@ -643,4 +667,85 @@ html, body {
     gap: 20px;
   }
 }
+/* Education & Courses Section */
+.education-courses {
+  padding: 60px 20px;
+}
 
+.edu-courses-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #282c30;
+  border-radius: 20px;
+  padding: 40px;
+  gap: 50px;
+  flex-wrap: wrap;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+/* Hover effect: only border for the container */
+.edu-courses-container:hover {
+  border: 3px solid #1E90FF; /* blue border on hover */
+  border-radius: 20px;        /* keep rounded corners */
+}
+
+/* Left side: Education */
+.edu-left, .edu-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.edu-left h2, .edu-right h2 {
+  color: #1E90FF;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.edu-item {
+  margin-bottom: 20px;
+}
+
+.edu-item h3 {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.edu-item p, .edu-item span {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* Right side: Courses */
+.course-item {
+  margin-bottom: 20px;
+}
+
+.course-item h3 {
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.cert-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1E90FF;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cert-btn:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .edu-courses-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
