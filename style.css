@@ -381,18 +381,20 @@ html, body {
 /* Make the video container square */
 .video-container {
   width: 100%;
-  aspect-ratio: 1 / 1; /* keeps it square */
+  aspect-ratio: 16 / 9; /* widescreen aspect ratio */
   position: relative;
   background: #000;
 }
+
 
 /* Video inside container */
 .video-container video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills the square */
+  object-fit: cover; /* ensures video covers container */
   border-radius: 10px 10px 0 0;
 }
+
 
 /* Controls at the Bottom */
 .controls-bottom {
