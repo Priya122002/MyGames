@@ -385,7 +385,7 @@ html, body {
   height: 200px; /* fixed height for all videos */
   position: relative;
   background: #000;
-  overflow: visible !important;
+  overflow: hidden;
   border-radius: 10px;
 }
 
@@ -539,21 +539,4 @@ html, body {
   border-bottom: 1px solid #444;
   margin-bottom: 5px;
 } 
-/* Separate styling for the Playback Speed dropdown */
-.speed-menu {
-  display: none; /* hidden until opened */
-  position: absolute;
-  bottom: 40px;   /* same vertical alignment as the More menu */
-  right: 10px;
-  background: #282c30;
-  border-radius: 8px;
-  padding: 5px 0;
-  z-index: 2000;
-  width: 180px;
-  flex-direction: column;
-  max-height: 400px;      /* allow it to grow bigger */
-  overflow-y: auto;       /* scroll if too long */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
 
