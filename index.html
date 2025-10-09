@@ -225,16 +225,32 @@
   <h2>🚀 My Projects</h2>
   <div class="projects-grid">
 
-    <!-- Project 1 -->
-    <div class="project-block fade-in">
-  <video src="https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/portfoliovideos/CarSim.mp4" width="100" height="50" autoplay muted loop playsinline></video>
-  
-  <!-- Content below video -->
+<div class="project-block fade-in">
+  <div class="video-container">
+    <video src="https://github.com/Priya122002/MyGames/raw/refs/heads/main/assets/portfoliovideos/CarSim.mp4"></video>
+
+    <!-- Bottom Controls -->
+    <div class="controls-bottom">
+      <div class="controls-row">
+        <button class="play-pause">►</button>
+        <div class="controls-right">
+          <button class="volume">🔊</button>
+          <button class="fullscreen">⛶</button>
+          <button class="more">⋮</button>
+        </div>
+      </div>
+      <input type="range" class="progress-bar" min="0" max="100" value="0">
+    </div>
+  </div>
+
   <div class="project-info">
     <h3>Car Simulation</h3>
     <p>Simulation of car vehicle, with foliage, PCG environment, and decals.</p>
   </div>
-   </div>
+</div>
+
+
+
 
     <!-- Project 2 -->
     <div class="project-block fade-in">
@@ -258,26 +274,7 @@
 </section>
 
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const aboutSection = document.querySelector('.about');
-      let hasAnimated = false; // Trigger animation only once
-
-      function checkVisibility() {
-        const rect = aboutSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Trigger fade-in only when scrolling down into view
-        if (!hasAnimated && rect.top < windowHeight - 100) {
-          aboutSection.classList.add('visible');
-          hasAnimated = true;
-        }
-      }
-
-      window.addEventListener('scroll', checkVisibility);
-      checkVisibility(); // In case already visible on page load
-    });
-  </script>
+<script src="script.js"></script>
 
 </body>
 </html>
