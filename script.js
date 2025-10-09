@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // --- Nested Playback Speed menu inside More menu ---
+    // --- Create Speed Menu ---
     const speedMenu = document.createElement('div');
-    speedMenu.classList.add('speed-menu');
+    speedMenu.classList.add('more-menu', 'speed-menu');
     speedMenu.style.display = 'none';
     speedMenu.innerHTML = `
       <div class="menu-item back">🔙 Back</div>
@@ -61,50 +61,57 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="menu-item" data-speed="1.75">1.75x</div>
       <div class="menu-item" data-speed="2">2x</div>
     `;
-    moreMenu.appendChild(speedMenu); // <-- append inside More menu
+    container.querySelector('.controls-right').appendChild(speedMenu);
 
-    // Toggle More menu
-    moreBtn.addEventListener('click', (e) => {
+    // Toggle More Menu
+    moreBtn.addEventListener('click', e => {
       e.stopPropagation();
-      const isVisible = moreMenu.style.display === 'flex';
-      moreMenu.style.display = isVisible ? 'none' : 'flex';
+      const visible = moreMenu.style.display === 'flex';
+      moreMenu.style.display = visible ? 'none' : 'flex';
       speedMenu.style.display = 'none';
     });
 
-    // Click on Playback Speed
-    const speedBtn = moreMenu.querySelector('[data-action="speed"]');
-    speedBtn.addEventListener('click', (e) => {
+    // Click Playback Speed
+    moreMenu.querySelector('[data-action="speed"]').addEventListener('click', e => {
       e.stopPropagation();
-      moreMenu.querySelectorAll('.menu-item').forEach(item => {
-        if(!item.classList.contains('speed-menu') && !item.classList.contains('back')) {
-          item.style.display = 'none';
-        }
-      });
+      moreMenu.style.display = 'none';
       speedMenu.style.display = 'flex';
     });
 
-    // Back button
-    speedMenu.querySelector('.back').addEventListener('click', (e) => {
+    // Click Back
+    speedMenu.querySelector('.back').addEventListener('click', e => {
       e.stopPropagation();
       speedMenu.style.display = 'none';
-      moreMenu.querySelectorAll('.menu-item').forEach(item => item.style.display = 'flex');
+      moreMenu.style.display = 'flex';
     });
 
-    // Set playback speed
+    // Set Playback Speed
     speedMenu.querySelectorAll('[data-speed]').forEach(item => {
       item.addEventListener('click', e => {
         e.stopPropagation();
         video.playbackRate = parseFloat(item.dataset.speed);
         speedMenu.style.display = 'none';
-        moreMenu.querySelectorAll('.menu-item').forEach(item => item.style.display = 'flex');
+        moreMenu.style.display = 'flex';
       });
     });
+    // Download functionality
+moreMenu.querySelector('[data-action="download"]').addEventListener('click', e => {
+  e.stopPropagation();
+  const videoSrc = video.src; // get current video source
+  const a = document.createElement('a');
+  a.href = videoSrc;
+  a.download = videoSrc.split('/').pop(); // get filename from URL
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  moreMenu.style.display = 'none'; // close menu
+});
 
-    // Close menus if clicked outside
+
+    // Close menus when clicking outside
     document.addEventListener('click', () => {
       moreMenu.style.display = 'none';
       speedMenu.style.display = 'none';
-      moreMenu.querySelectorAll('.menu-item').forEach(item => item.style.display = 'flex');
     });
   });
 });

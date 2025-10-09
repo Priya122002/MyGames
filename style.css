@@ -91,17 +91,6 @@ html, body {
   color: #ffffff;
 }
 
-/* Fade-in-up Animation */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Always 2 columns per row */
@@ -511,25 +500,21 @@ html, body {
   background: rgba(0, 0, 0, 0.7);
 }
 /* Main more menu */
-
-
 .more-menu {
-  display: none; /* Hidden initially */
+  display: none;
   position: absolute;
-  bottom: 40px; /* Above controls row */
+  bottom: 40px;
   right: 10px;
   background: #282c30;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   padding: 5px 0;
   z-index: 1000;
   width: 180px;
   flex-direction: column;
-  max-height: 300px; /* scrollable if too many items */
+  max-height: 300px;
   overflow-y: auto;
 }
 
-/* Menu items */
 .more-menu .menu-item {
   padding: 10px 15px;
   cursor: pointer;
@@ -545,10 +530,8 @@ html, body {
   color: #000;
 }
 
-/* Back button inside submenu */
-.more-menu .back {
+.more-menu .menu-item.back {
   font-weight: bold;
   border-bottom: 1px solid #444;
   margin-bottom: 5px;
 }
-
