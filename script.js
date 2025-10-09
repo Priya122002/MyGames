@@ -14,13 +14,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const pauseIcon = '❚❚';
     playPauseBtn.innerHTML = playIcon;
 
-    // Play/Pause
+    // --- Play/Pause ---
     playPauseBtn.addEventListener('click', () => {
-      if(video.paused) { video.play(); playPauseBtn.innerHTML = pauseIcon; }
-      else { video.pause(); playPauseBtn.innerHTML = playIcon; }
+      if(video.paused) { 
+        video.play(); 
+        playPauseBtn.innerHTML = pauseIcon; 
+      } else { 
+        video.pause(); 
+        playPauseBtn.innerHTML = playIcon; 
+      }
     });
 
-    // Progress bar
+    // --- Progress Bar ---
+    video.addEventListener('loadedmetadata', () => {
+      progressBar.max = 100;
+    });
     video.addEventListener('timeupdate', () => {
       progressBar.value = (video.currentTime / video.duration) * 100;
     });
@@ -28,21 +36,30 @@ document.addEventListener('DOMContentLoaded', () => {
       video.currentTime = (e.target.value / 100) * video.duration;
     });
 
-    // Volume
+    // --- Volume ---
+    let lastVolume = video.volume;
     volumeBtn.addEventListener('click', () => {
-      video.muted = !video.muted;
-      volumeBtn.textContent = video.muted ? '🔇' : '🔈';
-      if(!video.muted) video.volume = 1;
+      if(video.muted) {
+        video.muted = false;
+        video.volume = lastVolume;
+        volumeBtn.textContent = '🔈';
+      } else {
+        lastVolume = video.volume;
+        video.muted = true;
+        volumeBtn.textContent = '🔇';
+      }
     });
 
-    // Fullscreen
+    // --- Fullscreen ---
     fullscreenBtn.addEventListener('click', () => {
       if(!document.fullscreenElement) {
         if(container.requestFullscreen) container.requestFullscreen();
         else if(container.webkitRequestFullscreen) container.webkitRequestFullscreen();
+        else if(container.mozRequestFullScreen) container.mozRequestFullScreen();
       } else {
         if(document.exitFullscreen) document.exitFullscreen();
         else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
       }
     });
 
@@ -63,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     container.querySelector('.controls-right').appendChild(speedMenu);
 
-    // Toggle More Menu
+    // --- Toggle More Menu ---
     moreBtn.addEventListener('click', e => {
       e.stopPropagation();
       const visible = moreMenu.style.display === 'flex';
@@ -71,21 +88,28 @@ document.addEventListener('DOMContentLoaded', () => {
       speedMenu.style.display = 'none';
     });
 
-    // Click Playback Speed
-    moreMenu.querySelector('[data-action="speed"]').addEventListener('click', e => {
-      e.stopPropagation();
-      moreMenu.style.display = 'none';
-      speedMenu.style.display = 'flex';
-    });
+    // Prevent menus from closing when clicking inside
+    moreMenu.addEventListener('click', e => e.stopPropagation());
+    speedMenu.addEventListener('click', e => e.stopPropagation());
 
-    // Click Back
+    // --- Click Playback Speed ---
+    const speedAction = moreMenu.querySelector('[data-action="speed"]');
+    if(speedAction) {
+      speedAction.addEventListener('click', e => {
+        e.stopPropagation();
+        moreMenu.style.display = 'none';
+        speedMenu.style.display = 'flex';
+      });
+    }
+
+    // --- Click Back ---
     speedMenu.querySelector('.back').addEventListener('click', e => {
       e.stopPropagation();
       speedMenu.style.display = 'none';
       moreMenu.style.display = 'flex';
     });
 
-    // Set Playback Speed
+    // --- Set Playback Speed ---
     speedMenu.querySelectorAll('[data-speed]').forEach(item => {
       item.addEventListener('click', e => {
         e.stopPropagation();
@@ -94,21 +118,24 @@ document.addEventListener('DOMContentLoaded', () => {
         moreMenu.style.display = 'flex';
       });
     });
-    // Download functionality
-moreMenu.querySelector('[data-action="download"]').addEventListener('click', e => {
-  e.stopPropagation();
-  const videoSrc = video.src; // get current video source
-  const a = document.createElement('a');
-  a.href = videoSrc;
-  a.download = videoSrc.split('/').pop(); // get filename from URL
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  moreMenu.style.display = 'none'; // close menu
-});
 
+    // --- Download functionality ---
+    const downloadAction = moreMenu.querySelector('[data-action="download"]');
+    if(downloadAction) {
+      downloadAction.addEventListener('click', e => {
+        e.stopPropagation();
+        const videoSrc = video.src;
+        const a = document.createElement('a');
+        a.href = videoSrc;
+        a.download = videoSrc.split('/').pop();
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        moreMenu.style.display = 'none';
+      });
+    }
 
-    // Close menus when clicking outside
+    // --- Close menus when clicking outside ---
     document.addEventListener('click', () => {
       moreMenu.style.display = 'none';
       speedMenu.style.display = 'none';
