@@ -556,11 +556,14 @@ html, body {
 
 .playstore-body {
   display: flex;
-  justify-content: space-between;
-  align-items: center; /* vertically center text */
-  gap: 60px;
+  justify-content: center; /* center horizontally */
+  align-items: center;
+  gap: 30px; /* reduce spacing */
   flex-wrap: wrap;
+  max-width: 1000px; /* limit horizontal expansion */
+  margin: 0 auto; /* center the container */
 }
+
 
 .playstore-text {
   flex: 1;
@@ -674,25 +677,31 @@ html, body {
 
 .edu-courses-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* center horizontally */
+  gap: 30px; /* reduce spacing between columns */
+  flex-wrap: wrap;
+  max-width: 1000px; /* same as Playstore */
+  margin: 0 auto; /* center the container */
   background-color: #282c30;
   border-radius: 20px;
   padding: 40px;
-  gap: 50px;
-  flex-wrap: wrap;
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
+
+.edu-left, .edu-right {
+  flex: 1;
+  min-width: 250px; /* compact width */
+  max-width: 400px; /* limit column width */
+}
+
+
 /* Hover effect: only border for the container */
 .edu-courses-container:hover {
   border: 3px solid #1E90FF; /* blue border on hover */
   border-radius: 20px;        /* keep rounded corners */
 }
 
-/* Left side: Education */
-.edu-left, .edu-right {
-  flex: 1;
-  min-width: 300px;
-}
+
 
 .edu-left h2, .edu-right h2 {
   color: #1E90FF;
