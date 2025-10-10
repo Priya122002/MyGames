@@ -770,7 +770,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 250px;
+  height: 150px;
   box-sizing: border-box;
 }
 
