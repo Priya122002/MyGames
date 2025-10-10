@@ -1,7 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const videos = document.querySelectorAll('.video-container');
- document.addEventListener('DOMContentLoaded', () => {
   const fadeSections = document.querySelectorAll('.fade-in-up');
 
   const observer = new IntersectionObserver((entries) => {
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.2 });
 
   fadeSections.forEach(section => observer.observe(section));
-});
 
 
   videos.forEach(container => {
