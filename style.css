@@ -764,77 +764,113 @@ html, body {
   }
 }
 .footer {
-  height: 200px;
-  background: linear-gradient(135deg, #04162e, #08182e);
+  background: linear-gradient(90deg, #02172c, #0074D9);
   color: white;
+  padding: 40px 60px;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.footer-content {
-  width: 90%;
-  max-width: 1200px;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
+  height: 250px;
+  box-sizing: border-box;
 }
 
-.footer-content p {
-  margin: 0;
-  font-size: 16px;
-}
-
-.footer-content .socials {
-  display: flex;
-  flex-direction: column; /* stack vertically */
-  justify-content: center; /* center vertically in footer */
-  gap: 15px; /* spacing between each social link */
-}
-
-.footer-content .socials a {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* space between icon and text */
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  transition: transform 0.3s;
-}
-
-.footer-content .socials a img {
-  width: 15px;
-  height: 15px;
-}
-.footer-content .socials a:hover span {
-  color: #00acee; /* blue on hover */
-}
-.footer-content .socials a:hover {
-  transform: scale(1.05);
-}
-/* Footer already has .footer and .footer-content styles from previous step */
-
+/* --- Left Section --- */
 .footer-left {
   display: flex;
   align-items: center;
-  gap: 15px; /* space between image and name */
+  gap: 15px;
 }
 
-.footer-left img {
+.profile-img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   border: 3px solid transparent;
-  transition: border 0.3s;
+  transition: border 0.3s ease;
 }
 
-.footer-left img:hover {
-  border: 3px solid #00acee; /* blue border on hover */
+.profile-img:hover {
+  border: 3px solid #00bfff;
 }
 
-.footer-left span {
-  font-size: 18px;
+.footer-name {
+  font-size: 1.4em;
   font-weight: bold;
-  color: white;
 }
 
+/* --- Center Section (CV + WhatsApp) --- */
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.resume-btn {
+  background: #0074D9;
+  padding: 12px 25px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: #00bfff;
+  transform: scale(1.05);
+}
+
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #1da851;
+  transform: scale(1.05);
+}
+
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-item img {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+
+.social-item span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.social-item:hover span {
+  color: #00bfff;
+}
+
+.social-item:hover {
+  transform: scale(1.05);
+}
