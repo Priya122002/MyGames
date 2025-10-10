@@ -763,3 +763,39 @@ html, body {
     gap: 30px;
   }
 }
+.footer {
+  height: 200px;
+  background: linear-gradient(135deg, #0f2c54, #3a7bd5); /* dark blue to light blue */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.footer .footer-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.footer .footer-content p {
+  margin: 5px 0;
+}
+
+.footer .footer-content .socials {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.footer .footer-content .socials a {
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: color 0.3s;
+}
+
+.footer .footer-content .socials a:hover {
+  color: #d1e8ff;
+}
