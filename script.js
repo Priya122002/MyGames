@@ -50,6 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+// --- Picture-in-Picture ---
+const pipBtn = container.querySelector('.pip');
+if(pipBtn) {
+  pipBtn.addEventListener('click', async () => {
+    try {
+      if (video !== document.pictureInPictureElement) {
+        await video.requestPictureInPicture();
+      } else {
+        await document.exitPictureInPicture();
+      }
+    } catch(err) {
+      console.error("PiP failed:", err);
+    }
+  });
+}
     // --- Fullscreen ---
     fullscreenBtn.addEventListener('click', () => {
       if(!document.fullscreenElement) {
@@ -62,6 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
         else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
       }
     });
+
+    
 
     // --- Create Speed Menu ---
     const speedMenu = document.createElement('div');
