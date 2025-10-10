@@ -1,5 +1,7 @@
 
+  let lastScroll = 0;
 document.addEventListener('DOMContentLoaded', () => {
+
   const videos = document.querySelectorAll('.video-container');
   const fadeSections = document.querySelectorAll('.fade-in-up');
 
@@ -15,7 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fadeSections.forEach(section => observer.observe(section));
 
-
+const exploreBtn = document.querySelector('.hero .btn');
+  const projectsSection = document.getElementById('projects');
+  if (exploreBtn && projectsSection) {
+    exploreBtn.addEventListener('click', (e) => {
+      e.preventDefault(); // prevent default jump
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
   videos.forEach(container => {
     const video = container.querySelector('video');
     const playPauseBtn = container.querySelector('.play-pause');
