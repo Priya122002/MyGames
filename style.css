@@ -784,7 +784,7 @@ html, body {
   left: 50%;
   width: 200%; /* full width coverage */
   height: 200%; /* full height coverage */
-  background: linear-gradient(270deg, #174777, #003366, #0055aa, #0074d9, #00bfff);
+  background: linear-gradient(270deg, #285480, #003366, #0055aa, #0074d9, #00bfff);
   transform: translate(-50%, -50%) rotate(0deg);
   border-radius: 0; /* square / rectangle covers whole background */
   opacity: 0.3;
@@ -854,7 +854,7 @@ html, body {
 
 .resume-btn {
   background: #0074D9;
-  width: 180px;
+  width: 100px;
 }
 
 .resume-btn img {
@@ -869,7 +869,7 @@ html, body {
 
 .whatsapp-btn {
   background: #25D366;
-  width: 260px;
+  width: 200px;
 }
 
 .whatsapp-btn img {
