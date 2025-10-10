@@ -1,23 +1,20 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const videos = document.querySelectorAll('.video-container');
- const fadeSections = document.querySelectorAll('.fade-in-up');
+   const fadeSections = document.querySelectorAll('.fade-in-up');
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('active'); // play animation
-      } else {
-        entry.target.classList.remove('active'); // reset animation when leaving viewport
+        // Animate and stop observing so it happens only once
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
 
   fadeSections.forEach(section => observer.observe(section));
 
-  faders.forEach(fader => {
-    observer.observe(fader);
-  });
 
   videos.forEach(container => {
     const video = container.querySelector('video');

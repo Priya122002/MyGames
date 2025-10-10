@@ -677,7 +677,7 @@ html, body {
 }
 /* Education & Courses Section */
 .education-courses {
-  padding: 30px 20px;
+  padding: 80px 20px;
 }
 
 .edu-courses-container {
@@ -770,7 +770,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 150px;
+  height: 200px;
   box-sizing: border-box;
 }
 
@@ -887,7 +887,6 @@ html, body {
   transform: scale(1.05);
 }
 
-/* Initial state for elements to animate */
 .fade-in-up {
   opacity: 0;
   transform: translateY(30px);
