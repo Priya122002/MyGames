@@ -6,24 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const videos = document.querySelectorAll('.video-container');
   const fadeSections = document.querySelectorAll('.fade-in-up');
 
-  let lastScroll = 0; // track scroll position
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const currentScroll = window.scrollY;
-
-      // Animate only if scrolling down and section is in view
-      if (entry.isIntersecting && currentScroll > lastScroll) {
+      if (entry.isIntersecting) {
         entry.target.classList.add('active'); // play animation
-      } 
-      // Remove animation if scrolling up
-      else if (entry.isIntersecting && currentScroll < lastScroll) {
-        entry.target.classList.remove('active');
+      } else {
+        entry.target.classList.remove('active'); // reset animation when leaving viewport
       }
     });
   }, { threshold: 0.2 });
 
   fadeSections.forEach(section => observer.observe(section));
+
+
+
+
 
 const exploreBtn = document.querySelector('.hero .btn');
   const projectsSection = document.getElementById('projects');

@@ -764,7 +764,8 @@ html, body {
   }
 }
 .footer {
-  background: linear-gradient(90deg, #02172c, #062642);
+  position: relative; /* needed for background animation */
+  background: #02172c; /* fallback color */
   color: white;
   padding: 40px 60px;
   display: flex;
@@ -772,8 +773,39 @@ html, body {
   justify-content: space-between;
   height: 200px;
   box-sizing: border-box;
+  overflow: hidden; /* hide overflow of rotating square */
 }
 
+/* Animated full-width blue gradient background */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%; /* full width coverage */
+  height: 200%; /* full height coverage */
+  background: linear-gradient(270deg, #174777, #003366, #0055aa, #0074d9, #00bfff);
+  transform: translate(-50%, -50%) rotate(0deg);
+  border-radius: 0; /* square / rectangle covers whole background */
+  opacity: 0.3;
+  z-index: 0; /* behind content */
+  animation: rotateFull 20s linear infinite;
+}
+
+@keyframes rotateFull {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Keep footer content above animation */
+.footer > * {
+  position: relative;
+  z-index: 1;
+}
 /* --- Left Section --- */
 .footer-left {
   display: flex;
@@ -797,6 +829,7 @@ html, body {
   font-size: 1.4em;
   font-weight: bold;
 }
+
 /* --- Center Section (CV + WhatsApp) --- */
 .footer-center {
   display: flex;
@@ -820,35 +853,37 @@ html, body {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-/* CV button smaller */
 .resume-btn {
   background: #0074D9;
   width: 180px;
 }
+
 .resume-btn img {
   width: 20px;
   height: 20px;
 }
+
 .resume-btn:hover {
   background: #00bfff;
   transform: scale(1.05);
 }
 
-/* WhatsApp button larger */
 .whatsapp-btn {
   background: #25D366;
   width: 260px;
 }
+
 .whatsapp-btn img {
   width: 20px;
   height: 20px;
 }
+
 .whatsapp-btn:hover {
   background: #1da851;
   transform: scale(1.05);
 }
 
-
+/* --- Right Section --- */
 .footer-right {
   display: flex;
   flex-direction: column;
@@ -889,8 +924,8 @@ html, body {
 
 .fade-in-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
 }
 
 .fade-in-up.active {
