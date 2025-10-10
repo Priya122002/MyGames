@@ -1,16 +1,24 @@
 
-  let lastScroll = 0;
 document.addEventListener('DOMContentLoaded', () => {
+
+ window.scrollTo(0, 0);
 
   const videos = document.querySelectorAll('.video-container');
   const fadeSections = document.querySelectorAll('.fade-in-up');
 
+  let lastScroll = 0; // track scroll position
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      const currentScroll = window.scrollY;
+
+      // Animate only if scrolling down and section is in view
+      if (entry.isIntersecting && currentScroll > lastScroll) {
         entry.target.classList.add('active'); // play animation
-      } else {
-        entry.target.classList.remove('active'); // reset animation when leaving viewport
+      } 
+      // Remove animation if scrolling up
+      else if (entry.isIntersecting && currentScroll < lastScroll) {
+        entry.target.classList.remove('active');
       }
     });
   }, { threshold: 0.2 });
