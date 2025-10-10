@@ -1,22 +1,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const videos = document.querySelectorAll('.video-container');
-const faders = document.querySelectorAll(".fade-in-up");
+ const fadeSections = document.querySelectorAll('.fade-in-up');
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-          // Optional: unobserve if you want animation only once
-          // observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.2 // triggers when 20% of the section is visible
-    }
-  );
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active'); // play animation
+      } else {
+        entry.target.classList.remove('active'); // reset animation when leaving viewport
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeSections.forEach(section => observer.observe(section));
 
   faders.forEach(fader => {
     observer.observe(fader);

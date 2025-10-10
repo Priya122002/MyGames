@@ -894,7 +894,6 @@ html, body {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Active state when the element is in viewport */
 .fade-in-up.active {
   opacity: 1;
   transform: translateY(0);
