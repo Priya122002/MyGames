@@ -46,7 +46,7 @@ html, body {
 
 .text-box p {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #e0e0e0;
 }
 
@@ -70,7 +70,7 @@ html, body {
   background: #02041f;
   color: #e0e0e0;
   text-align: center;
-  padding: 100px 20px;
+  padding: 70px 20px;
   font-family: 'Lato', sans-serif;
 }
 
@@ -163,7 +163,7 @@ html, body {
 /* Experience Section */
 .experience {
   background: #02041f;
-  padding: 80px 20px;
+  padding: 40px 20px;
   font-family: 'Lato', sans-serif;
   text-align: center; /* Heading stays centered */
 }
@@ -243,7 +243,7 @@ html, body {
 .skills {
   background: #02041f;
   color: #e0e0e0;
-  padding: 100px 20px;
+  padding: 40px 20px;
   font-family: 'Lato', sans-serif;
 }
 
@@ -310,7 +310,7 @@ html, body {
 .projects {
   background: #02041f;
   color: #e0e0e0;
-  padding: 100px 20px;
+  padding: 40px 20px;
   text-align: center;
   font-family: 'Lato', sans-serif;
 }
@@ -548,7 +548,7 @@ html, body {
 
 /* Playstore Games Section */
 .playstore-games {
-  padding: 60px 20px;
+  padding: 20px 20px;
   /* keep existing background */
 }
 
@@ -677,7 +677,7 @@ html, body {
 }
 /* Education & Courses Section */
 .education-courses {
-  padding: 60px 20px;
+  padding: 30px 20px;
 }
 
 .edu-courses-container {
@@ -885,4 +885,17 @@ html, body {
 
 .social-item:hover {
   transform: scale(1.05);
+}
+
+/* Initial state for elements to animate */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Active state when the element is in viewport */
+.fade-in-up.active {
+  opacity: 1;
+  transform: translateY(0);
 }

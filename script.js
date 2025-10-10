@@ -1,5 +1,26 @@
+
 document.addEventListener('DOMContentLoaded', () => {
   const videos = document.querySelectorAll('.video-container');
+const faders = document.querySelectorAll(".fade-in-up");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          // Optional: unobserve if you want animation only once
+          // observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2 // triggers when 20% of the section is visible
+    }
+  );
+
+  faders.forEach(fader => {
+    observer.observe(fader);
+  });
 
   videos.forEach(container => {
     const video = container.querySelector('video');
