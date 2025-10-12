@@ -554,9 +554,9 @@ html, body {
 
 .playstore-heading {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 40px;
-  color: #1E90FF; /* blue heading */
+  color: #4FC3F7; /* blue heading */
 }
 
 .playstore-body {
@@ -709,7 +709,7 @@ html, body {
 
 
 .edu-left h2, .edu-right h2 {
-  color: #1E90FF;
+  color: #4FC3F7;
   font-size: 2rem;
   margin-bottom: 20px;
 }
