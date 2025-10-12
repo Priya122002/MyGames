@@ -828,6 +828,7 @@ html, body {
 .footer-name {
   font-size: 1.4em;
   font-weight: bold;
+   color: #00bfff;
 }
 .footer-center {
   display: flex;
