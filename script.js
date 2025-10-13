@@ -79,21 +79,23 @@ const exploreBtn = document.querySelector('.hero .btn');
       }
     });
 
-// --- Picture-in-Picture ---
-const pipBtn = container.querySelector('.pip');
-if(pipBtn) {
-  pipBtn.addEventListener('click', async () => {
-    try {
-      if (video !== document.pictureInPictureElement) {
-        await video.requestPictureInPicture();
-      } else {
-        await document.exitPictureInPicture();
-      }
-    } catch(err) {
-      console.error("PiP failed:", err);
+  const pipAction = moreMenu.querySelector('[data-action="pip"]');
+    if (pipAction) {
+      pipAction.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        try {
+          if (video !== document.pictureInPictureElement) {
+            await video.requestPictureInPicture();
+          } else {
+            await document.exitPictureInPicture();
+          }
+        } catch (err) {
+          console.error("PiP failed:", err);
+        }
+        moreMenu.style.display = 'none';
+      });
     }
-  });
-}
+
     // --- Fullscreen ---
     fullscreenBtn.addEventListener('click', () => {
       if(!document.fullscreenElement) {
