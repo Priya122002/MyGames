@@ -322,12 +322,21 @@ html, body {
 }
 .projects-grid {
   display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 columns per row */
+  gap: 30px; /* space between projects */
+  max-width: 1200px; /* overall width of grid */
+  margin: 0 auto; /* center the grid */
+  padding: 50px 20px;
+}
+.projects-top-grid {
+  display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
   gap: 30px; /* space between projects */
   max-width: 1200px; /* overall width of grid */
   margin: 0 auto; /* center the grid */
   padding: 50px 20px;
 }
+
 
 .project-block {
   display: flex;
