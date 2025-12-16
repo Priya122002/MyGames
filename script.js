@@ -153,32 +153,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const track = document.querySelector('.projects-track');
-  const pages = document.querySelectorAll('.projects-page');
-  const nextBtn = document.getElementById('projectsNext');
-  const prevBtn = document.getElementById('projectsPrev');
+const pages = document.querySelectorAll('.projects-page');
+const nextBtn = document.getElementById('projectsNext');
+const prevBtn = document.getElementById('projectsPrev');
 
-  let currentPage = 0;
+let currentPage = 0;
 
-  function updateCarousel() {
-    track.style.transform = `translateX(-${currentPage * 100}%)`;
-  }
+function updateCarousel() {
+  track.style.transform = `translateX(-${currentPage * 100}%)`;
+}
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      if (currentPage < pages.length - 1) {
-        currentPage++;
-        updateCarousel();
-      }
-    });
-  }
+if (nextBtn) {
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < pages.length - 1) {
+      currentPage++;
+      updateCarousel();
+    }
+  });
+}
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 0) {
-        currentPage--;
-        updateCarousel();
-      }
-    });
-  }
+if (prevBtn) {
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+      currentPage--;
+      updateCarousel();
+    }
+  });
+}
 
 });
