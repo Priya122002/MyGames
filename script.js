@@ -1,30 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ===============================
+     INITIAL SETUP
+  =============================== */
   window.scrollTo(0, 0);
 
-  const videos = document.querySelectorAll('.video-container');
+  /* ===============================
+     FADE-IN OBSERVER
+  =============================== */
   const fadeSections = document.querySelectorAll('.fade-in-up');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      } else {
-        entry.target.classList.remove('active');
-      }
+      entry.target.classList.toggle('active', entry.isIntersecting);
     });
   }, { threshold: 0.2 });
 
   fadeSections.forEach(section => observer.observe(section));
 
+  /* ===============================
+     HERO → PROJECTS SCROLL
+  =============================== */
   const exploreBtn = document.querySelector('.hero .btn');
   const projectsSection = document.getElementById('projects');
+
   if (exploreBtn && projectsSection) {
     exploreBtn.addEventListener('click', (e) => {
       e.preventDefault();
       projectsSection.scrollIntoView({ behavior: 'smooth' });
     });
   }
+
+  /* ===============================
+     VIDEO CONTROLS
+  =============================== */
+  const videos = document.querySelectorAll('.video-container');
 
   videos.forEach(container => {
     const video = container.querySelector('video');
@@ -35,11 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreBtn = container.querySelector('.more');
     const moreMenu = container.querySelector('.more-menu');
 
+    if (!video) return;
+
     const playIcon = '►';
     const pauseIcon = '❚❚';
-    playPauseBtn.innerHTML = playIcon;
+    if (playPauseBtn) playPauseBtn.innerHTML = playIcon;
 
-    playPauseBtn.addEventListener('click', () => {
+    playPauseBtn?.addEventListener('click', () => {
       if (video.paused) {
         video.play();
         playPauseBtn.innerHTML = pauseIcon;
@@ -50,19 +62,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     video.addEventListener('loadedmetadata', () => {
-      progressBar.max = 100;
+      if (progressBar) progressBar.max = 100;
     });
 
     video.addEventListener('timeupdate', () => {
-      progressBar.value = (video.currentTime / video.duration) * 100;
+      if (progressBar) {
+        progressBar.value = (video.currentTime / video.duration) * 100;
+      }
     });
 
-    progressBar.addEventListener('input', e => {
+    progressBar?.addEventListener('input', e => {
       video.currentTime = (e.target.value / 100) * video.duration;
     });
 
     let lastVolume = video.volume;
-    volumeBtn.addEventListener('click', () => {
+    volumeBtn?.addEventListener('click', () => {
       if (video.muted) {
         video.muted = false;
         video.volume = lastVolume;
@@ -74,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    fullscreenBtn.addEventListener('click', () => {
+    fullscreenBtn?.addEventListener('click', () => {
       if (!document.fullscreenElement) {
         container.requestFullscreen?.();
       } else {
@@ -82,69 +96,46 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    /* ---------- Speed Menu ---------- */
     const speedMenu = document.createElement('div');
-    speedMenu.classList.add('more-menu', 'speed-menu');
+    speedMenu.className = 'more-menu speed-menu';
     speedMenu.style.display = 'none';
     speedMenu.innerHTML = `
       <div class="menu-item back">🔙 Back</div>
-      <div class="menu-item" data-speed="0.25">0.25x</div>
       <div class="menu-item" data-speed="0.5">0.5x</div>
-      <div class="menu-item" data-speed="0.75">0.75x</div>
       <div class="menu-item" data-speed="1">Normal</div>
-      <div class="menu-item" data-speed="1.25">1.25x</div>
       <div class="menu-item" data-speed="1.5">1.5x</div>
-      <div class="menu-item" data-speed="1.75">1.75x</div>
       <div class="menu-item" data-speed="2">2x</div>
     `;
-    container.querySelector('.controls-right').appendChild(speedMenu);
+    container.querySelector('.controls-right')?.appendChild(speedMenu);
 
-    moreBtn.addEventListener('click', e => {
+    moreBtn?.addEventListener('click', e => {
       e.stopPropagation();
-      const visible = moreMenu.style.display === 'flex';
-      moreMenu.style.display = visible ? 'none' : 'flex';
+      moreMenu.style.display = moreMenu.style.display === 'flex' ? 'none' : 'flex';
       speedMenu.style.display = 'none';
     });
 
-    moreMenu.addEventListener('click', e => e.stopPropagation());
     speedMenu.addEventListener('click', e => e.stopPropagation());
+    moreMenu.addEventListener('click', e => e.stopPropagation());
 
-    const speedAction = moreMenu.querySelector('[data-action="speed"]');
-    if (speedAction) {
-      speedAction.addEventListener('click', e => {
-        e.stopPropagation();
-        moreMenu.style.display = 'none';
-        speedMenu.style.display = 'flex';
-      });
-    }
-
-    speedMenu.querySelector('.back').addEventListener('click', e => {
+    moreMenu.querySelector('[data-action="speed"]')?.addEventListener('click', e => {
       e.stopPropagation();
+      moreMenu.style.display = 'none';
+      speedMenu.style.display = 'flex';
+    });
+
+    speedMenu.querySelector('.back')?.addEventListener('click', () => {
       speedMenu.style.display = 'none';
       moreMenu.style.display = 'flex';
     });
 
     speedMenu.querySelectorAll('[data-speed]').forEach(item => {
-      item.addEventListener('click', e => {
-        e.stopPropagation();
+      item.addEventListener('click', () => {
         video.playbackRate = parseFloat(item.dataset.speed);
         speedMenu.style.display = 'none';
         moreMenu.style.display = 'flex';
       });
     });
-
-    const downloadAction = moreMenu.querySelector('[data-action="download"]');
-    if (downloadAction) {
-      downloadAction.addEventListener('click', e => {
-        e.stopPropagation();
-        const a = document.createElement('a');
-        a.href = video.src;
-        a.download = video.src.split('/').pop();
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        moreMenu.style.display = 'none';
-      });
-    }
 
     document.addEventListener('click', () => {
       moreMenu.style.display = 'none';
@@ -152,43 +143,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-// ===============================
-// PROJECT PAGINATION (FIXED)
-// ===============================
+  /* ===============================
+     PROJECT PAGINATION (FINAL FIX)
+  =============================== */
+  const pages = document.querySelectorAll('.projects-page');
+  const nextBtn = document.getElementById('projectsNext');
+  const prevBtn = document.getElementById('projectsPrev');
+  const indicator = document.getElementById('pageIndicator');
 
-const pages = document.querySelectorAll('.projects-page');
-const nextBtn = document.getElementById('projectsNext');
-const prevBtn = document.getElementById('projectsPrev');
-const indicator = document.getElementById('pageIndicator');
+  if (!pages.length || !nextBtn || !prevBtn) return;
 
-let currentPage = 0;
-const totalPages = pages.length;
+  let currentPage = 0;
 
-function updatePagination() {
-  pages.forEach((page, index) => {
-    page.classList.toggle('active', index === currentPage);
+  function updatePagination() {
+    pages.forEach((page, index) => {
+      page.classList.toggle('active', index === currentPage);
+    });
+
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === pages.length - 1;
+
+    if (indicator) {
+      indicator.textContent = `${currentPage + 1} / ${pages.length}`;
+    }
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < pages.length - 1) {
+      currentPage++;
+      updatePagination();
+    }
   });
 
-  indicator.textContent = `${currentPage + 1} / ${totalPages}`;
-  prevBtn.disabled = currentPage === 0;
-  nextBtn.disabled = currentPage === totalPages - 1;
-}
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+      currentPage--;
+      updatePagination();
+    }
+  });
 
-nextBtn.addEventListener('click', () => {
-  if (currentPage < totalPages - 1) {
-    currentPage++;
-    updatePagination();
-  }
-});
-
-prevBtn.addEventListener('click', () => {
-  if (currentPage > 0) {
-    currentPage--;
-    updatePagination();
-  }
-});
-
-updatePagination();
-
-
+  updatePagination();
 });
