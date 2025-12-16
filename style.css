@@ -943,9 +943,6 @@ html, body {
   transform: translateY(0);
 }
 
-/* ============================= */
-/* Projects Grid Wrapper */
-/* ============================= */
 
 .projects-grid-wrapper {
   position: relative;
@@ -953,17 +950,24 @@ html, body {
   margin: 0 auto;
 }
 
-
 .nav-arrow {
-  position: absolute;
-  top: 50%;                      
-  transform: translateY(-50%);
-  width: 80px;
-  height: 80px;
-  opacity: 0.65;
+  pointer-events: all;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 24px;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-arrow:hover {
+  transform: scale(1.1);
+  background: #fff;
 }
 
 .nav-arrow.left {
@@ -973,11 +977,6 @@ html, body {
 
 .nav-arrow.right {
   right: -100px;
-}
-
-.nav-arrow:hover {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.15);
 }
 
 .nav-arrow.left:hover {
