@@ -152,57 +152,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-document.addEventListener('DOMContentLoaded', () => {
+// ===============================
+// PROJECT PAGINATION (FIXED)
+// ===============================
 
+const pages = document.querySelectorAll('.projects-page');
+const nextBtn = document.getElementById('projectsNext');
+const prevBtn = document.getElementById('projectsPrev');
+const indicator = document.getElementById('pageIndicator');
 
-  const pages = document.querySelectorAll('.projects-page');
-  const nextBtn = document.getElementById('projectsNext');
-  const prevBtn = document.getElementById('projectsPrev');
-  const indicator = document.getElementById('pageIndicator');
+let currentPage = 0;
+const totalPages = pages.length;
 
-  let currentPage = 0;
-  const totalPages = pages.length;
+function updatePagination() {
+  pages.forEach((page, index) => {
+    page.classList.toggle('active', index === currentPage);
+  });
 
-  function updatePagination() {
-    // Show only active page
-    pages.forEach((page, index) => {
-      page.classList.toggle('active', index === currentPage);
-    });
+  indicator.textContent = `${currentPage + 1} / ${totalPages}`;
+  prevBtn.disabled = currentPage === 0;
+  nextBtn.disabled = currentPage === totalPages - 1;
+}
 
-    // Update page indicator
-    if (indicator) {
-      indicator.textContent = `${currentPage + 1} / ${totalPages}`;
-    }
-
-    // Enable / disable buttons
-    if (prevBtn) prevBtn.disabled = currentPage === 0;
-    if (nextBtn) nextBtn.disabled = currentPage === totalPages - 1;
+nextBtn.addEventListener('click', () => {
+  if (currentPage < totalPages - 1) {
+    currentPage++;
+    updatePagination();
   }
-
-  // Next button
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      if (currentPage < totalPages - 1) {
-        currentPage++;
-        updatePagination();
-      }
-    });
-  }
-
-  // Previous button
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 0) {
-        currentPage--;
-        updatePagination();
-      }
-    });
-  }
-
-  // Initial state
-  updatePagination();
-
 });
+
+prevBtn.addEventListener('click', () => {
+  if (currentPage > 0) {
+    currentPage--;
+    updatePagination();
+  }
+});
+
+updatePagination();
 
 
 });
