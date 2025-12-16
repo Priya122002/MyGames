@@ -942,3 +942,50 @@ html, body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Projects Left / Right Arrow Icons */
+.projects-nav-icons {
+  position: relative;
+  width: 100%;
+  height: 0;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 120px;               /* adjust vertical position */
+  width: 80px;
+  height: 80px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Left arrow */
+.nav-arrow.left {
+  left: 20px;
+}
+
+/* Right arrow (mirror using scaleX) */
+.nav-arrow.right {
+  right: 20px;
+  transform: scaleX(-1);
+}
+
+/* Hover effect */
+.nav-arrow:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Keep mirror on hover for right arrow */
+.nav-arrow.right:hover {
+  transform: scaleX(-1) scale(1.1);
+}
+
+/* Hide arrows on small screens */
+@media (max-width: 900px) {
+  .nav-arrow {
+    display: none;
+  }
+}
+
