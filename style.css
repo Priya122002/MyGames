@@ -944,49 +944,39 @@ html, body {
 }
 
 
-.projects-grid-wrapper {
-  position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
-}
 
 .nav-arrow {
-  pointer-events: all;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 24px;
+  position: fixed;               
+  top: 50%;                      
+  transform: translateY(-50%);
+  width: 80px;
+  height: 80px;
+  opacity: 0.6;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.nav-arrow:hover {
-  transform: scale(1.1);
-  background: #fff;
+  z-index: 9999;               
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .nav-arrow.left {
-  left: -100px;               
-  transform: translateY(-50%) scaleX(-1);
+  left: 20px;                   
+  transform: translateY(-50%) scaleX(-1); 
 }
 
 .nav-arrow.right {
-  right: -100px;
+  right: 20px;                
+}
+
+.nav-arrow:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
 }
 
 .nav-arrow.left:hover {
   transform: translateY(-50%) scaleX(-1) scale(1.15);
 }
 
-
 @media (max-width: 1024px) {
   .nav-arrow {
     display: none;
   }
 }
-
