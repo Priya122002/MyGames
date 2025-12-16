@@ -152,33 +152,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const track = document.querySelector('.projects-track');
-const pages = document.querySelectorAll('.projects-page');
-const nextBtn = document.getElementById('projectsNext');
-const prevBtn = document.getElementById('projectsPrev');
+document.addEventListener('DOMContentLoaded', () => {
 
-let currentPage = 0;
 
-function updateCarousel() {
-  track.style.transform = `translateX(-${currentPage * 100}%)`;
-}
+  const pages = document.querySelectorAll('.projects-page');
+  const nextBtn = document.getElementById('projectsNext');
+  const prevBtn = document.getElementById('projectsPrev');
+  const indicator = document.getElementById('pageIndicator');
 
-if (nextBtn) {
-  nextBtn.addEventListener('click', () => {
-    if (currentPage < pages.length - 1) {
-      currentPage++;
-      updateCarousel();
+  let currentPage = 0;
+  const totalPages = pages.length;
+
+  function updatePagination() {
+    // Show only active page
+    pages.forEach((page, index) => {
+      page.classList.toggle('active', index === currentPage);
+    });
+
+    // Update page indicator
+    if (indicator) {
+      indicator.textContent = `${currentPage + 1} / ${totalPages}`;
     }
-  });
-}
 
-if (prevBtn) {
-  prevBtn.addEventListener('click', () => {
-    if (currentPage > 0) {
-      currentPage--;
-      updateCarousel();
-    }
-  });
-}
+    // Enable / disable buttons
+    if (prevBtn) prevBtn.disabled = currentPage === 0;
+    if (nextBtn) nextBtn.disabled = currentPage === totalPages - 1;
+  }
+
+  // Next button
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) {
+        currentPage++;
+        updatePagination();
+      }
+    });
+  }
+
+  // Previous button
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePagination();
+      }
+    });
+  }
+
+  // Initial state
+  updatePagination();
+
+});
+
 
 });
