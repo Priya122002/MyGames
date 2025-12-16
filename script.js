@@ -1,7 +1,6 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 
- window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 
   const videos = document.querySelectorAll('.video-container');
   const fadeSections = document.querySelectorAll('.fade-in-up');
@@ -9,27 +8,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('active'); // play animation
+        entry.target.classList.add('active');
       } else {
-        entry.target.classList.remove('active'); // reset animation when leaving viewport
+        entry.target.classList.remove('active');
       }
     });
   }, { threshold: 0.2 });
 
   fadeSections.forEach(section => observer.observe(section));
 
-
-
-
-
-const exploreBtn = document.querySelector('.hero .btn');
+  const exploreBtn = document.querySelector('.hero .btn');
   const projectsSection = document.getElementById('projects');
   if (exploreBtn && projectsSection) {
     exploreBtn.addEventListener('click', (e) => {
-      e.preventDefault(); // prevent default jump
+      e.preventDefault();
       projectsSection.scrollIntoView({ behavior: 'smooth' });
     });
   }
+
   videos.forEach(container => {
     const video = container.querySelector('video');
     const playPauseBtn = container.querySelector('.play-pause');
@@ -43,32 +39,31 @@ const exploreBtn = document.querySelector('.hero .btn');
     const pauseIcon = '❚❚';
     playPauseBtn.innerHTML = playIcon;
 
-    // --- Play/Pause ---
     playPauseBtn.addEventListener('click', () => {
-      if(video.paused) { 
-        video.play(); 
-        playPauseBtn.innerHTML = pauseIcon; 
-      } else { 
-        video.pause(); 
-        playPauseBtn.innerHTML = playIcon; 
+      if (video.paused) {
+        video.play();
+        playPauseBtn.innerHTML = pauseIcon;
+      } else {
+        video.pause();
+        playPauseBtn.innerHTML = playIcon;
       }
     });
 
-    // --- Progress Bar ---
     video.addEventListener('loadedmetadata', () => {
       progressBar.max = 100;
     });
+
     video.addEventListener('timeupdate', () => {
       progressBar.value = (video.currentTime / video.duration) * 100;
     });
+
     progressBar.addEventListener('input', e => {
       video.currentTime = (e.target.value / 100) * video.duration;
     });
 
-    // --- Volume ---
     let lastVolume = video.volume;
     volumeBtn.addEventListener('click', () => {
-      if(video.muted) {
+      if (video.muted) {
         video.muted = false;
         video.volume = lastVolume;
         volumeBtn.textContent = '🔈';
@@ -79,39 +74,14 @@ const exploreBtn = document.querySelector('.hero .btn');
       }
     });
 
-  const pipAction = moreMenu.querySelector('[data-action="pip"]');
-    if (pipAction) {
-      pipAction.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        try {
-          if (video !== document.pictureInPictureElement) {
-            await video.requestPictureInPicture();
-          } else {
-            await document.exitPictureInPicture();
-          }
-        } catch (err) {
-          console.error("PiP failed:", err);
-        }
-        moreMenu.style.display = 'none';
-      });
-    }
-
-    // --- Fullscreen ---
     fullscreenBtn.addEventListener('click', () => {
-      if(!document.fullscreenElement) {
-        if(container.requestFullscreen) container.requestFullscreen();
-        else if(container.webkitRequestFullscreen) container.webkitRequestFullscreen();
-        else if(container.mozRequestFullScreen) container.mozRequestFullScreen();
+      if (!document.fullscreenElement) {
+        container.requestFullscreen?.();
       } else {
-        if(document.exitFullscreen) document.exitFullscreen();
-        else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
-        else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
+        document.exitFullscreen?.();
       }
     });
 
-    
-
-    // --- Create Speed Menu ---
     const speedMenu = document.createElement('div');
     speedMenu.classList.add('more-menu', 'speed-menu');
     speedMenu.style.display = 'none';
@@ -128,7 +98,6 @@ const exploreBtn = document.querySelector('.hero .btn');
     `;
     container.querySelector('.controls-right').appendChild(speedMenu);
 
-    // --- Toggle More Menu ---
     moreBtn.addEventListener('click', e => {
       e.stopPropagation();
       const visible = moreMenu.style.display === 'flex';
@@ -136,13 +105,11 @@ const exploreBtn = document.querySelector('.hero .btn');
       speedMenu.style.display = 'none';
     });
 
-    // Prevent menus from closing when clicking inside
     moreMenu.addEventListener('click', e => e.stopPropagation());
     speedMenu.addEventListener('click', e => e.stopPropagation());
 
-    // --- Click Playback Speed ---
     const speedAction = moreMenu.querySelector('[data-action="speed"]');
-    if(speedAction) {
+    if (speedAction) {
       speedAction.addEventListener('click', e => {
         e.stopPropagation();
         moreMenu.style.display = 'none';
@@ -150,14 +117,12 @@ const exploreBtn = document.querySelector('.hero .btn');
       });
     }
 
-    // --- Click Back ---
     speedMenu.querySelector('.back').addEventListener('click', e => {
       e.stopPropagation();
       speedMenu.style.display = 'none';
       moreMenu.style.display = 'flex';
     });
 
-    // --- Set Playback Speed ---
     speedMenu.querySelectorAll('[data-speed]').forEach(item => {
       item.addEventListener('click', e => {
         e.stopPropagation();
@@ -167,15 +132,13 @@ const exploreBtn = document.querySelector('.hero .btn');
       });
     });
 
-    // --- Download functionality ---
     const downloadAction = moreMenu.querySelector('[data-action="download"]');
-    if(downloadAction) {
+    if (downloadAction) {
       downloadAction.addEventListener('click', e => {
         e.stopPropagation();
-        const videoSrc = video.src;
         const a = document.createElement('a');
-        a.href = videoSrc;
-        a.download = videoSrc.split('/').pop();
+        a.href = video.src;
+        a.download = video.src.split('/').pop();
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -183,10 +146,39 @@ const exploreBtn = document.querySelector('.hero .btn');
       });
     }
 
-    // --- Close menus when clicking outside ---
     document.addEventListener('click', () => {
       moreMenu.style.display = 'none';
       speedMenu.style.display = 'none';
     });
   });
+
+  const track = document.querySelector('.projects-track');
+  const pages = document.querySelectorAll('.projects-page');
+  const nextBtn = document.getElementById('projectsNext');
+  const prevBtn = document.getElementById('projectsPrev');
+
+  let currentPage = 0;
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentPage * 100}%)`;
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        updateCarousel();
+      }
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updateCarousel();
+      }
+    });
+  }
+
 });
