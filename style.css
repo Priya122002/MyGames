@@ -322,7 +322,7 @@ html, body {
 }
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 columns per row */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
   gap: 30px; /* space between projects */
   max-width: 1400px; /* overall width of grid */
   margin: 0 auto; /* center the grid */
