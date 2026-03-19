@@ -56,15 +56,35 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+// HERO PARALLAX + FADE
+const hero = document.querySelector(".hero");
+const heroLeft = document.querySelector(".hero-left");
 
+// Smooth fade-in for hero
+window.addEventListener("load", () => {
+  const heroLeft = document.querySelector(".hero-left");
+  const heroRight = document.querySelector(".hero-right");
+
+  heroLeft.style.opacity = 0;
+  heroRight.style.opacity = 0;
+
+  setTimeout(() => {
+    heroLeft.style.transition = "0.8s ease";
+    heroRight.style.transition = "0.8s ease";
+
+    heroLeft.style.opacity = 1;
+    heroRight.style.opacity = 1;
+  }, 200);
+});
 // Hamburger
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-links");
 
-hamburger.addEventListener("click", () => {
-  navMenu.classList.toggle("show");
-});
-
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+}
 // Scroll progress bar
 window.addEventListener("scroll", () => {
   const scrollTop = window.scrollY;
