@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fadeSections.forEach(section => observer.observe(section));
 
-// ===== NAVIGATION SYSTEM =====
 
-// Smooth scroll with offset
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
@@ -279,4 +277,7 @@ const exploreBtn = document.querySelector('.hero .btn');
       speedMenu.style.display = 'none';
     });
   });
+  
 });
+
+
