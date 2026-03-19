@@ -18,7 +18,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fadeSections.forEach(section => observer.observe(section));
 
+// ===== NAVIGATION SYSTEM =====
 
+// Smooth scroll with offset
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute('href'));
+    window.scrollTo({
+      top: target.offsetTop - 80,
+      behavior: 'smooth'
+    });
+
+    document.querySelector('.nav-links').classList.remove('show');
+  });
+});
+
+// Active section highlight
+const sectionsNav = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sectionsNav.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// Hamburger
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("show");
+});
+
+// Scroll progress bar
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const height = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / height) * 100;
+
+  document.querySelector(".scroll-bar").style.width = progress + "%";
+});
+
+// Auto hide navbar (premium feel)
+let lastScroll = 0;
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    navbar.classList.add("hide"); // scrolling down
+  } else {
+    navbar.classList.remove("hide"); // scrolling up
+  }
+
+  lastScroll = currentScroll;
+});
 
 
 
