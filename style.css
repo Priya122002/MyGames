@@ -280,20 +280,50 @@ html, body {
 
 /* Skill Block */
 .skill-block {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 15px;
-  background: #1e2536;
-  border-radius: 12px;
-  padding: 15px 20px;
-  width: 220px;      /* Fixed width for all blocks */
-  height: 80px;      /* Fixed height for all blocks */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  padding: 18px 20px;
+  border-radius: 14px;
+
+  background: linear-gradient(145deg, #111827, #1f2937);
+
+  border: 1px solid rgba(59,130,246,0.2);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.6),
+    inset 0 0 15px rgba(255,255,255,0.02);
+
+  transition: 0.3s;
+  overflow: hidden;
+}
+.skill-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(59,130,246,0.3),
+    transparent
+  );
+
+  opacity: 0;
+  transition: 0.4s;
+}
+.skill-block:hover {
+  transform: translateY(-8px) scale(1.03);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.9),
+    0 0 20px rgba(59,130,246,0.4);
 }
 
-.skill-block:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+.skill-block:hover::before {
+  opacity: 1;
 }
 
 /* Skill Icon */
@@ -1172,32 +1202,65 @@ html, body {
   overflow: hidden; /* hide overflow of rotating square */
 }
 
-/* Animated full-width blue gradient background */
 .footer::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200%; /* full width coverage */
-  height: 200%; /* full height coverage */
-  background: linear-gradient(270deg, #285480, #003366, #0055aa, #0074d9, #00bfff);
-  transform: translate(-50%, -50%) rotate(0deg);
-  border-radius: 0; /* square / rectangle covers whole background */
-  opacity: 0.3;
-  z-index: 0; /* behind content */
-  animation: rotateFull 20s linear infinite;
-}
+  inset: 0;
 
-@keyframes rotateFull {
+  background: linear-gradient(
+    120deg,
+    #02172c,
+    #003366,
+    #0055aa,
+    #0074d9,
+    #00bfff,
+    #0055aa,
+    #003366,
+    #02172c
+  );
+
+  background-size: 300% 300%;
+
+  opacity: 0.35;
+
+  animation: liquidFlow 12s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes liquidFlow {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg);
+    background-position: 0% 50%;
   }
 }
+.footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-/* Keep footer content above animation */
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0,191,255,0.2),
+    transparent 70%
+  );
+
+  animation: glowPulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
 .footer > * {
   position: relative;
   z-index: 1;
