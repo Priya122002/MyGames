@@ -29,7 +29,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
       behavior: 'smooth'
     });
 
-    document.querySelector('.nav-links').classList.remove('show');
+   document.querySelector('.nav-right').classList.remove('show');
   });
 });
 
@@ -76,11 +76,11 @@ window.addEventListener("load", () => {
 });
 // Hamburger
 const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-links");
+const navRight = document.querySelector(".nav-right");
 
-if (hamburger) {
+if (hamburger && navRight) {
   hamburger.addEventListener("click", () => {
-    navMenu.classList.toggle("show");
+    navRight.classList.toggle("show");
   });
 }
 // Scroll progress bar

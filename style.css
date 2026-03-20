@@ -132,7 +132,31 @@ html, body {
   margin-right: 20px;
 }
 
+.projects-top-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
 
+/* responsive */
+@media (max-width: 1200px) {
+  .projects-top-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .projects-top-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .projects-top-grid {
+    grid-template-columns: 1fr;
+  }
+}
 /* Project info below video */
 .project-info {
   padding: 10px;
@@ -310,23 +334,6 @@ html, body {
   color: #4FC3F7;
   margin-bottom: 50px;
 }
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 columns per row */
-  gap: 30px; /* space between projects */
-  max-width: 1400px; /* overall width of grid */
-  margin: 0 auto; /* center the grid */
-  padding: 50px 20px;
-}
-.projects-top-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
-  gap: 30px; /* space between projects */
-  max-width: 1200px; /* overall width of grid */
-  margin: 0 auto; /* center the grid */
-  padding: 50px 20px;
-}
-
 
 .project-block {
   display: flex;
@@ -738,14 +745,35 @@ html, body {
   line-height: 1.2;
 }
 
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 🔥 BIG SCREEN = 4 */
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
 
-
-@media (max-width: 900px) {
+/* Laptop */
+@media (max-width: 1200px) {
   .projects-grid {
-    grid-template-columns: 1fr; /* single column */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* Tablet */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
 /* Make the video container square */
 /* Video container with fixed height */
 .video-container {
@@ -1292,7 +1320,7 @@ html, body {
 }
 
 .fade-in-up {
-  opacity: 0;
+  opacity: 1;
   transform: translateY(40px);
   transition: all 0.6s ease-out;
 }
@@ -1301,7 +1329,7 @@ html, body {
   opacity: 1;
   transform: translateY(0);
 }
-/* ===== NAVBAR ===== */
+
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed;
@@ -1429,38 +1457,72 @@ html, body {
   cursor: pointer;
 }
 
-/* Responsive */
+/* ================= MOBILE NAVBAR FIX ================= */
 @media (max-width: 900px) {
+
   .navbar {
-    padding: 15px 20px;
+    padding: 12px 20px;
   }
 
+  /* 🔥 Hamburger */
+  .hamburger {
+    display: block;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #4FC3F7;
+    margin-left: auto;
+    z-index: 3000;
+  }
+
+  /* 🔥 Hide menu initially */
   .nav-right {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background: #1e2536;
+    position: fixed;
+    top: 0;
+    right: -100%; /* slide from right */
+
+    width: 260px;
+    height: 100vh;
+
+    background: rgba(10, 15, 35, 0.95);
+    backdrop-filter: blur(20px);
 
     flex-direction: column;
-    width: 220px;
-    padding: 20px;
+    align-items: flex-start;
 
-    display: none;
-    border-radius: 10px 0 0 10px;
+    padding: 80px 20px;
+
+    gap: 30px;
+
+    transition: right 0.4s ease;
+
+    border-left: 1px solid rgba(79,195,247,0.2);
+
+    z-index: 2500;
   }
 
+  /* 🔥 Show menu */
   .nav-right.show {
-    display: flex;
+    right: 0;
   }
 
+  /* 🔥 Links */
   .nav-links {
     flex-direction: column;
     gap: 20px;
+    width: 100%;
   }
 
-  .hamburger {
-    display: block;
-    margin-left: auto;
+  .nav-links a {
+    font-size: 1rem;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  /* 🔥 Hire button inside menu */
+  .hire-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
   }
 }
 
@@ -1921,4 +1983,89 @@ html, body {
 }
 .tech-item:hover {
   box-shadow: 0 0 10px rgba(79,195,247,0.4);
+}
+@media (max-width: 600px) {
+
+  .hero {
+    flex-direction: column;        /* 🔥 stack layout */
+    align-items: center;
+    text-align: center;
+    padding: 100px 15px 40px;
+  }
+
+  /* 🔥 MOVE IMAGE TO TOP */
+  .hero-right {
+    order: -1;                    /* ✅ IMPORTANT */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .hero-right img {
+    width: 260px;
+    height: auto;
+    max-width: 90%;
+  }
+
+  .hero-right::before {
+    width: 280px;
+    height: 280px;
+  }
+
+  /* TEXT */
+  .hero-left {
+    order: 1;
+    max-width: 100%;
+  }
+
+  .hero-left h1 {
+    font-size: 2rem;
+  }
+
+  .hero-left h2 {
+    font-size: 1rem;
+  }
+
+  .hero-left p {
+    font-size: 0.9rem;
+  }
+
+  /* BUTTONS */
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+   .float-icon {
+    width: 35px;   /* 🔥 smaller box */
+    height: 35px;
+    border-radius: 10px;
+  }
+
+  .float-icon img {
+    width: 18px;   /* 🔥 smaller icon */
+    height: 18px;
+  }
+
+  /* OPTIONAL: adjust positions to avoid overlap */
+  .float-icon.unity {
+    top: 15%;
+    left: 10px;
+  }
+
+  .float-icon.unreal {
+    top: 10px;
+    right: 20px;
+  }
+
+  .float-icon.game {
+    bottom: 8%;
+    right: 15px;
+  }
+
+  .float-icon.vr {
+    bottom: 8%;
+    left: 20px;
+  }
 }
