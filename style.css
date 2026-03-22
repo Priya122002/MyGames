@@ -1190,14 +1190,14 @@ html, body {
   }
 }
 .footer {
-  position: relative; /* needed for background animation */
+  position: relative;
   background: #02172c; /* fallback color */
   color: white;
   padding: 40px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 200px;
+  height: auto;
   box-sizing: border-box;
   overflow: hidden; /* hide overflow of rotating square */
 }
@@ -1437,7 +1437,30 @@ html, body {
 
   animation: glowLine 3s ease-in-out infinite;
 }
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;   /* stack items */
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
 
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+  }
+
+  .profile-img {
+    width: 70px;
+    height: 70px;
+  }
+}
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+}
 @keyframes glowLine {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }
@@ -1460,6 +1483,7 @@ html, body {
 
   z-index: 2000;
 }
+
 
 /* ===== LOGO ===== */
 .nav-logo {
