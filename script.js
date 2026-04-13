@@ -147,7 +147,10 @@ const exploreBtn = document.querySelector('.hero .btn');
       progressBar.max = 100;
     });
     video.addEventListener('timeupdate', () => {
-      progressBar.value = (video.currentTime / video.duration) * 100;
+     const value = (video.currentTime / video.duration) * 100;
+progressBar.value = value;
+
+progressBar.style.background = `linear-gradient(to right, #4FC3F7 ${value}%, #555 ${value}%)`;
     });
     progressBar.addEventListener('input', e => {
       video.currentTime = (e.target.value / 100) * video.duration;
