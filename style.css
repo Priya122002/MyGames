@@ -876,29 +876,40 @@ html, body {
 .progress-bar {
   flex: 1;                  /* stretch to fill space */
   -webkit-appearance: none; /* remove default styling */
-  height: 5px;              /* track height */
+  height: 8px;              /* track height */
   border-radius: 5px;
   background: #555;
   cursor: pointer;
   margin: 0;                 /* remove extra margin */
   align-self: center;        /* vertically center inside flex */
 }
+.progress-bar {
+  background: linear-gradient(to right, #4FC3F7 0%, #4FC3F7 0%, #555 0%, #555 100%);
+}
+
+/* Firefox fill */
+.progress-bar::-moz-range-progress {
+  background: #4FC3F7;
+  height: 8px;
+  border-radius: 4px;
+}
 .progress-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 14px;
   height: 14px;
-  background: #fff;
+  background: #4FC3F7;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -4.5px;       /* centers thumb on 5px track: (thumb height - track height)/2 */
+  margin-top: -3px; /* PERFECT CENTER for 8px track */
 }
 
 .progress-bar::-moz-range-thumb {
   width: 14px;
   height: 14px;
-  background: #fff;
+  background: #4FC3F7;
   border-radius: 50%;
   cursor: pointer;
+  border: none;
 }
 .progress-bar::-webkit-slider-thumb:hover {
   transform: scale(1.2);
