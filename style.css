@@ -365,6 +365,64 @@ html, body {
   margin-bottom: 50px;
 }
 
+.projects-carousel {
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 72px;
+}
+
+.projects-viewport {
+  overflow: hidden;
+}
+
+.projects-track {
+  display: flex;
+  transition: transform 0.45s ease;
+}
+
+.projects-grid {
+  min-width: 100%;
+}
+
+.projects-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(79, 195, 247, 0.18);
+  color: #4FC3F7;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  transition: 0.3s ease;
+  z-index: 5;
+}
+
+.projects-nav:hover:not(:disabled) {
+  background: #4FC3F7;
+  color: #000;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.projects-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.projects-nav-prev {
+  left: 0;
+}
+
+.projects-nav-next {
+  right: 0;
+}
+
 .project-block {
   display: flex;
   flex-direction: column;
@@ -777,7 +835,7 @@ html, body {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 🔥 BIG SCREEN = 4 */
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   max-width: 1400px;
   margin: 0 auto;
@@ -793,6 +851,10 @@ html, body {
 
 /* Tablet */
 @media (max-width: 900px) {
+  .projects-carousel {
+    padding: 0 56px;
+  }
+
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -800,8 +862,33 @@ html, body {
 
 /* Mobile */
 @media (max-width: 600px) {
+  .projects-carousel {
+    padding: 0 14px;
+  }
+
+  .projects-nav {
+    top: auto;
+    bottom: -10px;
+    transform: none;
+    width: 44px;
+    height: 44px;
+  }
+
+  .projects-nav:hover:not(:disabled) {
+    transform: scale(1.08);
+  }
+
+  .projects-nav-prev {
+    left: calc(50% - 54px);
+  }
+
+  .projects-nav-next {
+    right: calc(50% - 54px);
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
+    padding-bottom: 80px;
   }
 }
 /* Make the video container square */

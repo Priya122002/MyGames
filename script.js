@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const videos = document.querySelectorAll('.video-container');
   const fadeSections = document.querySelectorAll('.fade-in-up');
+  const projectsTrack = document.querySelector('.projects-track');
+  const projectsGrid = document.querySelector('.projects-grid');
+  const prevProjectsBtn = document.querySelector('.projects-nav-prev');
+  const nextProjectsBtn = document.querySelector('.projects-nav-next');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -17,6 +21,54 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.2 });
 
   fadeSections.forEach(section => observer.observe(section));
+
+  if (projectsTrack && projectsGrid && prevProjectsBtn && nextProjectsBtn) {
+    const projectCards = Array.from(projectsGrid.querySelectorAll('.project-block'));
+    let cardsPerPage = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 4 : 6;
+    let currentPage = 0;
+
+    const rebuildProjectPages = () => {
+      cardsPerPage = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 4 : 6;
+
+      const totalPages = Math.max(1, Math.ceil(projectCards.length / cardsPerPage));
+      currentPage = Math.min(currentPage, totalPages - 1);
+
+      projectsTrack.innerHTML = '';
+
+      for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
+        const pageGrid = document.createElement('div');
+        pageGrid.className = 'projects-grid';
+
+        projectCards
+          .slice(pageIndex * cardsPerPage, (pageIndex + 1) * cardsPerPage)
+          .forEach(card => pageGrid.appendChild(card));
+
+        projectsTrack.appendChild(pageGrid);
+      }
+
+      projectsTrack.style.transform = `translateX(-${currentPage * 100}%)`;
+      prevProjectsBtn.disabled = currentPage === 0;
+      nextProjectsBtn.disabled = currentPage === totalPages - 1;
+    };
+
+    prevProjectsBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage -= 1;
+        rebuildProjectPages();
+      }
+    });
+
+    nextProjectsBtn.addEventListener('click', () => {
+      const totalPages = Math.max(1, Math.ceil(projectCards.length / cardsPerPage));
+      if (currentPage < totalPages - 1) {
+        currentPage += 1;
+        rebuildProjectPages();
+      }
+    });
+
+    window.addEventListener('resize', rebuildProjectPages);
+    rebuildProjectPages();
+  }
 
 
 document.querySelectorAll('.nav-links a').forEach(link => {
